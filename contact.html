@@ -486,6 +486,8 @@
         async function handleFormSubmit(event) {
             event.preventDefault();
             
+            console.log('🚀 Form submission started');
+            
             // Show loading state
             const submitButton = event.target.querySelector('button[type="submit"]');
             const originalText = submitButton.textContent;
@@ -500,16 +502,36 @@
                 message: document.getElementById('message')?.value || ''
             };
             
+            console.log('📝 Form data:', formData);
+            
+            // Check if Supabase is initialized
+            if (!window.StartupOpsDB) {
+                console.error('❌ StartupOpsDB not initialized');
+                showNotification('Database connection not ready. Please refresh the page and try again.', 'error');
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+                return;
+            }
+            
             try {
+                console.log('📤 Submitting to Supabase...');
+                
                 // Submit to Supabase
                 const result = await window.StartupOpsDB.submitContactForm(formData);
                 
+                console.log('📥 Supabase response:', result);
+                
                 if (result.success) {
+                    console.log('✅ Form submitted successfully');
+                    
                     // Send email notification
                     try {
-                        await window.StartupOpsNotifications.sendContactNotification(formData);
+                        if (window.StartupOpsNotifications) {
+                            await window.StartupOpsNotifications.sendContactNotification(formData);
+                            console.log('📧 Email notification sent');
+                        }
                     } catch (error) {
-                        console.log('Email notification failed (non-critical):', error);
+                        console.log('⚠️ Email notification failed (non-critical):', error);
                     }
                     
                     // Show success message with confirmation
@@ -528,11 +550,24 @@
                         event.target.reset();
                     }, 500);
                 } else {
+                    console.error('❌ Submission failed:', result.error);
                     throw new Error(result.error);
                 }
             } catch (error) {
-                console.error('Form submission error:', error);
-                showNotification('Sorry, there was an error sending your message. Please try again or contact us directly.', 'error');
+                console.error('❌ Form submission error:', error);
+                
+                // Show detailed error message
+                let errorMessage = 'Sorry, there was an error sending your message. ';
+                
+                if (error.message && error.message.includes('stage')) {
+                    errorMessage += 'Database configuration issue detected. Please contact us directly at startup.ops.co@gmail.com';
+                } else if (error.message) {
+                    errorMessage += `Error: ${error.message}`;
+                } else {
+                    errorMessage += 'Please try again or contact us directly at startup.ops.co@gmail.com';
+                }
+                
+                showNotification(errorMessage, 'error');
             } finally {
                 // Reset button state
                 submitButton.textContent = originalText;
