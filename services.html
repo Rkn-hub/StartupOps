@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html class="dark overflow-x-hidden" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>StartupOps - Services to Build Your Vision</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <!-- Standardized Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #64FFDA, #64FFDA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        .glassmorphism {
+            background: rgba(42, 42, 42, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+        }
+        
+        /* Original Service Card Styles */
+        .glass-card {
+            background-color: rgba(245, 247, 250, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(245, 247, 250, 0.1);
+            border-radius: var(--radius);
+        }
+        .glass-card:hover {
+            box-shadow: 0 0 20px rgba(0, 224, 255, 0.2), 0 0 30px rgba(43, 140, 255, 0.1);
+            border-color: rgba(43, 140, 255, 0.5);
+        }
+        .neon-accent {
+            background-image: linear-gradient(to right, #64FFDA, #64FFDA);
+        }
+        
+        /* Hover Cards from Uiverse.io */
+        .hover-card-container {
+            margin: 0 auto;
+        }
+        
+        .hover-card {
+            position: relative;
+            width: 200px;
+            height: 300px;
+            margin: 0 auto;
+            background: #000;
+            border-radius: 15px;
+            box-shadow: 0 15px 60px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hover-card-face {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hover-card-face.back {
+            box-sizing: border-box;
+            padding: 20px;
+        }
+        
+        .hover-card-face.back b {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .hover-card-face.back .desc {
+            background: linear-gradient(90deg, #64FFDA, #64FFDA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hover-card-face.front {
+            transition: 0.5s;
+            background-color: #64FFDA;
+            border-radius: 15px;
+        }
+        
+        .hover-card-face.front b {
+            margin: 0;
+            padding: 0;
+            font-size: 5.1em;
+            color: #fff;
+            transition: 0.5s;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+        
+        .hover-card:hover .hover-card-face.front {
+            height: 60px;
+        }
+        
+        .hover-card:hover .hover-card-face.front b {
+            font-size: 2em;
+        }
+        
+        /* Flip Card Styles */
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 280px;
+            perspective: 1000px;
+            font-family: inherit;
+        }
+        
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .flip-card-front {
+            background: linear-gradient(135deg, 
+                rgba(245, 247, 250, 0.1) 0%, 
+                rgba(43, 140, 255, 0.1) 50%, 
+                rgba(0, 224, 255, 0.1) 100%);
+            border: 1px solid rgba(43, 140, 255, 0.3);
+            backdrop-filter: blur(12px);
+        }
+        
+        .flip-card-back {
+            background: linear-gradient(135deg, 
+                rgba(43, 140, 255, 0.9) 0%, 
+                rgba(0, 224, 255, 0.8) 50%, 
+                rgba(142, 45, 226, 0.9) 100%);
+            color: white;
+            transform: rotateY(180deg);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .flip-card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: white;
+        }
+        
+        .flip-card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #64FFDA;
+        }
+        
+        .flip-card-back .flip-card-icon {
+            color: white;
+        }
+        
+        .flip-card-description {
+            font-size: 0.875rem;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+        }
+        
+        .flip-card-front .flip-card-description {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* 3D Card Styles */
+        .card-3d-parent {
+            width: 100%;
+            max-width: 320px;
+            height: 300px;
+            perspective: 1000px;
+            margin: 0 auto;
+        }
+        
+        .card-3d {
+            height: 100%;
+            border-radius: 25px;
+            background: linear-gradient(135deg, rgba(100, 255, 218, 0.8) 0%, rgba(100, 255, 218, 0.6) 100%);
+            transition: all 0.5s ease-in-out;
+            transform-style: preserve-3d;
+            box-shadow: rgba(100, 255, 218, 0) 40px 50px 25px -40px, rgba(100, 255, 218, 0.2) 0px 25px 25px -5px;
+        }
+        
+        .card-3d-glass {
+            transform-style: preserve-3d;
+            position: absolute;
+            inset: 8px;
+            border-radius: 30px;
+            border-top-right-radius: 50%;
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.3) 100%);
+            backdrop-filter: blur(5px);
+            transform: translate3d(0px, 0px, 25px);
+            border-left: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.5s ease-in-out;
+        }
+        
+        .card-3d-content {
+            padding: 60px 25px 0px 25px;
+            transform: translate3d(0, 0, 26px);
+        }
+        
+        .card-3d-content .card-3d-title {
+            display: block;
+            color: white;
+            font-weight: 900;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        .card-3d-content .card-3d-text {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 13px;
+            margin-top: 10px;
+            line-height: 1.4;
+        }
+        
+        .card-3d-bottom {
+            padding: 10px 12px;
+            transform-style: preserve-3d;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transform: translate3d(0, 0, 26px);
+        }
+        
+        .card-3d-view-more {
+            display: flex;
+            align-items: center;
+            width: 40%;
+            justify-content: flex-end;
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .card-3d-view-more:hover {
+            transform: translate3d(0, 0, 10px);
+        }
+        
+        .card-3d-view-more-button {
+            background: none;
+            border: none;
+            color: white;
+            font-weight: bolder;
+            font-size: 11px;
+            cursor: pointer;
+        }
+        
+        .card-3d-view-more .card-3d-svg {
+            fill: none;
+            stroke: white;
+            stroke-width: 3px;
+            max-height: 12px;
+            margin-left: 3px;
+        }
+        
+        .card-3d-social-buttons {
+            display: flex;
+            gap: 8px;
+            transform-style: preserve-3d;
+        }
+        
+        .card-3d-social-button {
+            width: 25px;
+            aspect-ratio: 1;
+            padding: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            border: none;
+            display: grid;
+            place-content: center;
+            box-shadow: rgba(43, 140, 255, 0.5) 0px 7px 5px -5px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .card-3d-social-button:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translate3d(0, 0, 10px);
+        }
+        
+        .card-3d-social-button .card-3d-svg {
+            width: 12px;
+            fill: white;
+        }
+        
+        .card-3d-logo {
+            position: absolute;
+            right: 0;
+            top: 0;
+            transform-style: preserve-3d;
+        }
+        
+        .card-3d-circle {
+            display: block;
+            position: absolute;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            top: 0;
+            right: 0;
+            box-shadow: rgba(100, 100, 111, 0.2) -10px 10px 20px 0px;
+            backdrop-filter: blur(5px);
+            background: rgba(0, 224, 255, 0.2);
+            transition: all 0.5s ease-in-out;
+        }
+        
+        .card-3d-circle1 {
+            width: 100px;
+            transform: translate3d(0, 0, 20px);
+            top: 8px;
+            right: 8px;
+        }
+        
+        .card-3d-circle2 {
+            width: 80px;
+            transform: translate3d(0, 0, 40px);
+            top: 10px;
+            right: 10px;
+            backdrop-filter: blur(1px);
+            transition-delay: 0.2s;
+        }
+        
+        .card-3d-circle3 {
+            width: 60px;
+            transform: translate3d(0, 0, 60px);
+            top: 17px;
+            right: 17px;
+            transition-delay: 0.4s;
+        }
+        
+        .card-3d-circle4 {
+            width: 40px;
+            transform: translate3d(0, 0, 80px);
+            top: 23px;
+            right: 23px;
+            transition-delay: 0.6s;
+        }
+        
+        .card-3d-circle5 {
+            width: 30px;
+            transform: translate3d(0, 0, 100px);
+            top: 30px;
+            right: 30px;
+            display: grid;
+            place-content: center;
+            transition-delay: 0.8s;
+        }
+        
+        .card-3d-circle5 .card-3d-svg {
+            width: 12px;
+            fill: white;
+        }
+        
+        .card-3d-parent:hover .card-3d {
+            transform: rotate3d(1, 1, 0, 20deg);
+            box-shadow: rgba(100, 255, 218, 0.4) 30px 50px 25px -40px, rgba(100, 255, 218, 0.3) 0px 25px 30px 0px;
+        }
+        
+        .card-3d-parent:hover .card-3d .card-3d-social-button {
+            transform: translate3d(0, 0, 20px);
+            box-shadow: rgba(43, 140, 255, 0.3) -5px 20px 10px 0px;
+        }
+        
+        .card-3d-parent:hover .card-3d .card-3d-circle2 {
+            transform: translate3d(0, 0, 60px);
+        }
+        
+        .card-3d-parent:hover .card-3d .card-3d-circle3 {
+            transform: translate3d(0, 0, 80px);
+        }
+        
+        .card-3d-parent:hover .card-3d .card-3d-circle4 {
+            transform: translate3d(0, 0, 100px);
+        }
+        
+        .card-3d-parent:hover .card-3d .card-3d-circle5 {
+            transform: translate3d(0, 0, 120px);
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#212121",
+                        "accent": "#64FFDA",
+                        "secondary": "#FFFFFF",
+                        "highlight-start": "#64FFDA",
+                        "highlight-end": "#64FFDA",
+                        "background-light": "#F5F7FA",
+                        "background-dark": "#212121",
+                        "text-primary": "#FFFFFF",
+                        "text-secondary": "#B0B0B0",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "heading": ["Poppins", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "20px",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-dark font-display text-text-primary overflow-x-hidden">
+    <!-- Hero Container with Background -->
+    <div class="relative w-full overflow-x-hidden">
+        <!-- Standardized Background Elements -->
+        <div class="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-b from-primary/30 to-transparent z-0"></div>
+        <div class="absolute top-[-200px] right-[-200px] w-[500px] h-[500px] bg-accent/10 rounded-full blur-3xl z-0"></div>
+        <div class="absolute top-[300px] left-[-250px] w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl z-0"></div>
+        
+        <!-- Content Container -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- STANDARDIZED NAVIGATION -->
+            <header class="flex items-center justify-between py-6">
+                <!-- Logo Section -->
+                <div class="flex items-center gap-4 text-white">
+                    <div class="size-6 text-accent">
+                        <svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-white text-xl font-bold font-heading">StartupOps</h2>
+                </div>
+                
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex items-center gap-8 text-sm">
+                    <a class="text-gray-300 hover:text-white transition-colors" href="index.html">Home</a>
+                    <a class="text-accent" href="services.html">Services</a>
+                    <a class="text-gray-300 hover:text-white transition-colors" href="portfolio.html">Portfolio</a>
+                    <a class="text-gray-300 hover:text-white transition-colors" href="about.html">About</a>
+                    <a class="text-gray-300 hover:text-white transition-colors" href="how-it-works.html">How It Works</a>
+                </nav>
+                
+                <!-- CTA Button -->
+                <button onclick="window.location.href='contact.html'" class="hidden md:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary/80 border border-accent/30 text-white text-sm font-semibold leading-normal hover:bg-primary transition-all hover:shadow-lg hover:shadow-accent/20">
+                    <span class="truncate">Get Started</span>
+                </button>
+            </header>
+
+            <!-- STANDARDIZED HERO CONTENT -->
+            <main class="py-20 sm:py-28 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <!-- Main Heading -->
+                    <h1 class="text-5xl md:text-7xl font-bold font-heading tracking-tighter text-white leading-tight">
+                        Services to Build Your <span class="gradient-text">Vision</span>
+                    </h1>
+                    
+                    <!-- Subtitle -->
+                    <h2 class="mt-6 max-w-2xl mx-auto text-lg text-gray-400">
+                        Comprehensive startup support from idea to scale — branding, tech, legal, and marketing.
+                    </h2>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="mt-10 flex flex-wrap gap-4 justify-center">
+                        <!-- Primary CTA -->
+                        <button onclick="window.location.href='contact.html'" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-accent text-black text-base font-bold leading-normal tracking-wide shadow-lg shadow-accent/20 transition-all hover:scale-105 hover:shadow-xl hover:shadow-accent/30">
+                            <span class="truncate">Get Started</span>
+                        </button>
+                        
+                        <!-- Secondary CTA -->
+                        <button onclick="window.location.href='portfolio.html'" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-white/10 border border-white/20 text-white text-base font-bold leading-normal tracking-wide backdrop-blur-sm transition-all hover:bg-white/20 hover:border-white/30">
+                            <span class="truncate">View Portfolio</span>
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Services Content Section -->
+    <div class="relative w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                            <section class="flex flex-col gap-6 px-4">
+                                <h2 class="text-white text-2xl md:text-3xl font-bold font-heading leading-tight tracking-[-0.015em]">Strategy & Branding</h2>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    <!-- 3D Card 1 - Idea Validation -->
+                                    <div class="card-3d-parent">
+                                        <div class="card-3d" style="background: linear-gradient(135deg, rgba(43, 140, 255, 0.8) 0%, rgba(0, 224, 255, 0.9) 100%);">
+                                            <div class="card-3d-glass"></div>
+                                            <div class="card-3d-content">
+                                                <span class="card-3d-title">Idea Validation</span>
+                                                <span class="card-3d-text">In-depth analysis and framework design to ensure product-market fit and sustainable growth</span>
+                                            </div>
+                                            <div class="card-3d-bottom">
+                                                <div class="card-3d-social-buttons">
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M3 3v18h18v-18h-18zm16 16h-14v-14h14v14z"/>
+                                                            <path d="M8 12h8"/>
+                                                            <path d="M12 8v8"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="card-3d-view-more">
+                                                    <button onclick="window.location.href='contact.html'" class="card-3d-view-more-button">Get Quote</button>
+                                                    <svg class="card-3d-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="m6 9 6 6 6-6"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="card-3d-logo">
+                                                <span class="card-3d-circle card-3d-circle1"></span>
+                                                <span class="card-3d-circle card-3d-circle2"></span>
+                                                <span class="card-3d-circle card-3d-circle3"></span>
+                                                <span class="card-3d-circle card-3d-circle4"></span>
+                                                <span class="card-3d-circle card-3d-circle5">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="card-3d-svg">
+                                                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 3D Card 2 - Brand Identity -->
+                                    <div class="card-3d-parent">
+                                        <div class="card-3d" style="background: linear-gradient(135deg, rgba(142, 45, 226, 0.8) 0%, rgba(43, 140, 255, 0.9) 100%);">
+                                            <div class="card-3d-glass"></div>
+                                            <div class="card-3d-content">
+                                                <span class="card-3d-title">Brand Identity</span>
+                                                <span class="card-3d-text">Crafting a unique logo, visual system, and brand guidelines that resonate with your target audience</span>
+                                            </div>
+                                            <div class="card-3d-bottom">
+                                                <div class="card-3d-social-buttons">
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                                            <circle cx="9" cy="9" r="2"/>
+                                                            <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="card-3d-view-more">
+                                                    <button onclick="window.location.href='contact.html'" class="card-3d-view-more-button">Get Quote</button>
+                                                    <svg class="card-3d-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="m6 9 6 6 6-6"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="card-3d-logo">
+                                                <span class="card-3d-circle card-3d-circle1"></span>
+                                                <span class="card-3d-circle card-3d-circle2"></span>
+                                                <span class="card-3d-circle card-3d-circle3"></span>
+                                                <span class="card-3d-circle card-3d-circle4"></span>
+                                                <span class="card-3d-circle card-3d-circle5">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="card-3d-svg">
+                                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                                        <circle cx="9" cy="9" r="2"/>
+                                                        <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 3D Card 3 - Pitch Deck -->
+                                    <div class="card-3d-parent">
+                                        <div class="card-3d" style="background: linear-gradient(135deg, rgba(0, 224, 255, 0.8) 0%, rgba(142, 45, 226, 0.9) 100%);">
+                                            <div class="card-3d-glass"></div>
+                                            <div class="card-3d-content">
+                                                <span class="card-3d-title">Pitch Deck</span>
+                                                <span class="card-3d-text">Compelling presentations that captivate investors and secure funding for your startup journey</span>
+                                            </div>
+                                            <div class="card-3d-bottom">
+                                                <div class="card-3d-social-buttons">
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M3 3v18h18v-18h-18zm16 16h-14v-14h14v14z"/>
+                                                            <path d="M8 12h8"/>
+                                                            <path d="M12 8v8"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <line x1="12" y1="1" x2="12" y2="23"/>
+                                                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="card-3d-view-more">
+                                                    <button onclick="window.location.href='contact.html'" class="card-3d-view-more-button">Get Quote</button>
+                                                    <svg class="card-3d-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="m6 9 6 6 6-6"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="card-3d-logo">
+                                                <span class="card-3d-circle card-3d-circle1"></span>
+                                                <span class="card-3d-circle card-3d-circle2"></span>
+                                                <span class="card-3d-circle card-3d-circle3"></span>
+                                                <span class="card-3d-circle card-3d-circle4"></span>
+                                                <span class="card-3d-circle card-3d-circle5">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="card-3d-svg">
+                                                        <line x1="12" y1="1" x2="12" y2="23"/>
+                                                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="flex flex-col gap-6 px-4">
+                                <h2 class="text-white text-2xl md:text-3xl font-bold font-heading leading-tight tracking-[-0.015em]">Technology Development</h2>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    <!-- 3D Card 1 - MVP Development -->
+                                    <div class="card-3d-parent">
+                                        <div class="card-3d" style="background: linear-gradient(135deg, rgba(142, 45, 226, 0.8) 0%, rgba(43, 140, 255, 0.9) 100%);">
+                                            <div class="card-3d-glass"></div>
+                                            <div class="card-3d-content">
+                                                <span class="card-3d-title">MVP Development</span>
+                                                <span class="card-3d-text">Rapidly build and test your core product with real users on any platform</span>
+                                            </div>
+                                            <div class="card-3d-bottom">
+                                                <div class="card-3d-social-buttons">
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="card-3d-view-more">
+                                                    <button onclick="window.location.href='contact.html'" class="card-3d-view-more-button">Get Quote</button>
+                                                    <svg class="card-3d-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="m6 9 6 6 6-6"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="card-3d-logo">
+                                                <span class="card-3d-circle card-3d-circle1"></span>
+                                                <span class="card-3d-circle card-3d-circle2"></span>
+                                                <span class="card-3d-circle card-3d-circle3"></span>
+                                                <span class="card-3d-circle card-3d-circle4"></span>
+                                                <span class="card-3d-circle card-3d-circle5">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="card-3d-svg">
+                                                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 3D Card 2 - Landing Pages -->
+                                    <div class="card-3d-parent">
+                                        <div class="card-3d" style="background: linear-gradient(135deg, rgba(0, 224, 255, 0.8) 0%, rgba(142, 45, 226, 0.9) 100%);">
+                                            <div class="card-3d-glass"></div>
+                                            <div class="card-3d-content">
+                                                <span class="card-3d-title">Landing Pages</span>
+                                                <span class="card-3d-text">High-converting pages and custom e-commerce setups for maximum impact</span>
+                                            </div>
+                                            <div class="card-3d-bottom">
+                                                <div class="card-3d-social-buttons">
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                                            <line x1="8" y1="21" x2="16" y2="21"/>
+                                                            <line x1="12" y1="17" x2="12" y2="21"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M3 3h18v18H3zM9 17V7l8 5-8 5z"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="card-3d-view-more">
+                                                    <button onclick="window.location.href='contact.html'" class="card-3d-view-more-button">Get Quote</button>
+                                                    <svg class="card-3d-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="m6 9 6 6 6-6"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="card-3d-logo">
+                                                <span class="card-3d-circle card-3d-circle1"></span>
+                                                <span class="card-3d-circle card-3d-circle2"></span>
+                                                <span class="card-3d-circle card-3d-circle3"></span>
+                                                <span class="card-3d-circle card-3d-circle4"></span>
+                                                <span class="card-3d-circle card-3d-circle5">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="card-3d-svg">
+                                                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                                        <line x1="8" y1="21" x2="16" y2="21"/>
+                                                        <line x1="12" y1="17" x2="12" y2="21"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 3D Card 3 - No-Code Solutions -->
+                                    <div class="card-3d-parent">
+                                        <div class="card-3d" style="background: linear-gradient(135deg, rgba(43, 140, 255, 0.9) 0%, rgba(0, 224, 255, 0.8) 100%);">
+                                            <div class="card-3d-glass"></div>
+                                            <div class="card-3d-content">
+                                                <span class="card-3d-title">No-Code Solutions</span>
+                                                <span class="card-3d-text">Accelerate your launch with efficient and scalable low-code solutions</span>
+                                            </div>
+                                            <div class="card-3d-bottom">
+                                                <div class="card-3d-social-buttons">
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="card-3d-view-more">
+                                                    <button onclick="window.location.href='contact.html'" class="card-3d-view-more-button">Get Quote</button>
+                                                    <svg class="card-3d-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="m6 9 6 6 6-6"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="card-3d-logo">
+                                                <span class="card-3d-circle card-3d-circle1"></span>
+                                                <span class="card-3d-circle card-3d-circle2"></span>
+                                                <span class="card-3d-circle card-3d-circle3"></span>
+                                                <span class="card-3d-circle card-3d-circle4"></span>
+                                                <span class="card-3d-circle card-3d-circle5">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="card-3d-svg">
+                                                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="flex flex-col gap-6 px-4">
+                                <h2 class="text-white text-2xl md:text-3xl font-bold font-heading leading-tight tracking-[-0.015em]">Legal & Compliance</h2>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    <!-- 3D Card 1 - Incorporation -->
+                                    <div class="card-3d-parent">
+                                        <div class="card-3d" style="background: linear-gradient(135deg, rgba(0, 224, 255, 0.8) 0%, rgba(43, 140, 255, 0.9) 100%);">
+                                            <div class="card-3d-glass"></div>
+                                            <div class="card-3d-content">
+                                                <span class="card-3d-title">Incorporation</span>
+                                                <span class="card-3d-text">Navigate the complexities of registering your business entity with expert guidance</span>
+                                            </div>
+                                            <div class="card-3d-bottom">
+                                                <div class="card-3d-social-buttons">
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M3 3h18v18H3zM9 17V7l8 5-8 5z"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                                            <polyline points="14,2 14,8 20,8"/>
+                                                            <line x1="16" y1="13" x2="8" y2="13"/>
+                                                            <line x1="16" y1="17" x2="8" y2="17"/>
+                                                            <polyline points="10,9 9,9 8,9"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="card-3d-view-more">
+                                                    <button onclick="window.location.href='contact.html'" class="card-3d-view-more-button">Get Quote</button>
+                                                    <svg class="card-3d-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="m6 9 6 6 6-6"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="card-3d-logo">
+                                                <span class="card-3d-circle card-3d-circle1"></span>
+                                                <span class="card-3d-circle card-3d-circle2"></span>
+                                                <span class="card-3d-circle card-3d-circle3"></span>
+                                                <span class="card-3d-circle card-3d-circle4"></span>
+                                                <span class="card-3d-circle card-3d-circle5">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="card-3d-svg">
+                                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                                        <polyline points="14,2 14,8 20,8"/>
+                                                        <line x1="16" y1="13" x2="8" y2="13"/>
+                                                        <line x1="16" y1="17" x2="8" y2="17"/>
+                                                        <polyline points="10,9 9,9 8,9"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 3D Card 2 - Agreements -->
+                                    <div class="card-3d-parent">
+                                        <div class="card-3d" style="background: linear-gradient(135deg, rgba(142, 45, 226, 0.8) 0%, rgba(0, 224, 255, 0.9) 100%);">
+                                            <div class="card-3d-glass"></div>
+                                            <div class="card-3d-content">
+                                                <span class="card-3d-title">Agreements</span>
+                                                <span class="card-3d-text">Establish clear terms and equity splits for a strong foundation with investors</span>
+                                            </div>
+                                            <div class="card-3d-bottom">
+                                                <div class="card-3d-social-buttons">
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                                            <rect x="2" y="9" width="4" height="12"/>
+                                                            <circle cx="4" cy="4" r="2"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="card-3d-view-more">
+                                                    <button onclick="window.location.href='contact.html'" class="card-3d-view-more-button">Get Quote</button>
+                                                    <svg class="card-3d-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="m6 9 6 6 6-6"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="card-3d-logo">
+                                                <span class="card-3d-circle card-3d-circle1"></span>
+                                                <span class="card-3d-circle card-3d-circle2"></span>
+                                                <span class="card-3d-circle card-3d-circle3"></span>
+                                                <span class="card-3d-circle card-3d-circle4"></span>
+                                                <span class="card-3d-circle card-3d-circle5">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="card-3d-svg">
+                                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                                        <rect x="2" y="9" width="4" height="12"/>
+                                                        <circle cx="4" cy="4" r="2"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 3D Card 3 - Legal Documents -->
+                                    <div class="card-3d-parent">
+                                        <div class="card-3d" style="background: linear-gradient(135deg, rgba(43, 140, 255, 0.9) 0%, rgba(142, 45, 226, 0.8) 100%);">
+                                            <div class="card-3d-glass"></div>
+                                            <div class="card-3d-content">
+                                                <span class="card-3d-title">Legal Documents</span>
+                                                <span class="card-3d-text">Expertly drafted SAFE/SHA documents to protect your venture and stakeholders</span>
+                                            </div>
+                                            <div class="card-3d-bottom">
+                                                <div class="card-3d-social-buttons">
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                                            <polyline points="14,2 14,8 20,8"/>
+                                                            <line x1="16" y1="13" x2="8" y2="13"/>
+                                                            <line x1="16" y1="17" x2="8" y2="17"/>
+                                                            <polyline points="10,9 9,9 8,9"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="card-3d-view-more">
+                                                    <button onclick="window.location.href='contact.html'" class="card-3d-view-more-button">Get Quote</button>
+                                                    <svg class="card-3d-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="m6 9 6 6 6-6"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="card-3d-logo">
+                                                <span class="card-3d-circle card-3d-circle1"></span>
+                                                <span class="card-3d-circle card-3d-circle2"></span>
+                                                <span class="card-3d-circle card-3d-circle3"></span>
+                                                <span class="card-3d-circle card-3d-circle4"></span>
+                                                <span class="card-3d-circle card-3d-circle5">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="card-3d-svg">
+                                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                                        <polyline points="14,2 14,8 20,8"/>
+                                                        <line x1="16" y1="13" x2="8" y2="13"/>
+                                                        <line x1="16" y1="17" x2="8" y2="17"/>
+                                                        <polyline points="10,9 9,9 8,9"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="flex flex-col gap-6 px-4">
+                                <h2 class="text-white text-2xl md:text-3xl font-bold font-heading leading-tight tracking-[-0.015em]">Marketing & Growth</h2>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    <!-- 3D Card 1 - Social Media -->
+                                    <div class="card-3d-parent">
+                                        <div class="card-3d" style="background: linear-gradient(135deg, rgba(43, 140, 255, 0.8) 0%, rgba(0, 224, 255, 0.9) 100%);">
+                                            <div class="card-3d-glass"></div>
+                                            <div class="card-3d-content">
+                                                <span class="card-3d-title">Social Media</span>
+                                                <span class="card-3d-text">Targeted campaigns to build brand awareness and drive engagement across platforms</span>
+                                            </div>
+                                            <div class="card-3d-bottom">
+                                                <div class="card-3d-social-buttons">
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                                            <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="card-3d-view-more">
+                                                    <button onclick="window.location.href='contact.html'" class="card-3d-view-more-button">Get Quote</button>
+                                                    <svg class="card-3d-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="m6 9 6 6 6-6"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="card-3d-logo">
+                                                <span class="card-3d-circle card-3d-circle1"></span>
+                                                <span class="card-3d-circle card-3d-circle2"></span>
+                                                <span class="card-3d-circle card-3d-circle3"></span>
+                                                <span class="card-3d-circle card-3d-circle4"></span>
+                                                <span class="card-3d-circle card-3d-circle5">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="card-3d-svg">
+                                                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 3D Card 2 - SEO & Digital Ads -->
+                                    <div class="card-3d-parent">
+                                        <div class="card-3d" style="background: linear-gradient(135deg, rgba(0, 224, 255, 0.8) 0%, rgba(142, 45, 226, 0.9) 100%);">
+                                            <div class="card-3d-glass"></div>
+                                            <div class="card-3d-content">
+                                                <span class="card-3d-title">SEO & Digital Ads</span>
+                                                <span class="card-3d-text">Optimize your online presence and run effective ad campaigns for growth</span>
+                                            </div>
+                                            <div class="card-3d-bottom">
+                                                <div class="card-3d-social-buttons">
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <circle cx="11" cy="11" r="8"/>
+                                                            <path d="m21 21-4.35-4.35"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M3 3v18h18v-18h-18zm16 16h-14v-14h14v14z"/>
+                                                            <path d="M8 12h8"/>
+                                                            <path d="M12 8v8"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="card-3d-view-more">
+                                                    <button onclick="window.location.href='contact.html'" class="card-3d-view-more-button">Get Quote</button>
+                                                    <svg class="card-3d-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="m6 9 6 6 6-6"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="card-3d-logo">
+                                                <span class="card-3d-circle card-3d-circle1"></span>
+                                                <span class="card-3d-circle card-3d-circle2"></span>
+                                                <span class="card-3d-circle card-3d-circle3"></span>
+                                                <span class="card-3d-circle card-3d-circle4"></span>
+                                                <span class="card-3d-circle card-3d-circle5">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="card-3d-svg">
+                                                        <circle cx="11" cy="11" r="8"/>
+                                                        <path d="m21 21-4.35-4.35"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 3D Card 3 - Community Marketing -->
+                                    <div class="card-3d-parent">
+                                        <div class="card-3d" style="background: linear-gradient(135deg, rgba(142, 45, 226, 0.8) 0%, rgba(43, 140, 255, 0.9) 100%);">
+                                            <div class="card-3d-glass"></div>
+                                            <div class="card-3d-content">
+                                                <span class="card-3d-title">Community Marketing</span>
+                                                <span class="card-3d-text">Build a loyal community and leverage influencers to amplify your reach</span>
+                                            </div>
+                                            <div class="card-3d-bottom">
+                                                <div class="card-3d-social-buttons">
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                                            <circle cx="9" cy="7" r="4"/>
+                                                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="card-3d-view-more">
+                                                    <button onclick="window.location.href='contact.html'" class="card-3d-view-more-button">Get Quote</button>
+                                                    <svg class="card-3d-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="m6 9 6 6 6-6"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="card-3d-logo">
+                                                <span class="card-3d-circle card-3d-circle1"></span>
+                                                <span class="card-3d-circle card-3d-circle2"></span>
+                                                <span class="card-3d-circle card-3d-circle3"></span>
+                                                <span class="card-3d-circle card-3d-circle4"></span>
+                                                <span class="card-3d-circle card-3d-circle5">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="card-3d-svg">
+                                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                                        <circle cx="9" cy="7" r="4"/>
+                                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="flex flex-col gap-6 px-4">
+                                <h2 class="text-white text-2xl md:text-3xl font-bold font-heading leading-tight tracking-[-0.015em]">Mentorship & Advisory</h2>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    <!-- 3D Card 1 - 1:1 Guidance -->
+                                    <div class="card-3d-parent">
+                                        <div class="card-3d" style="background: linear-gradient(135deg, rgba(0, 224, 255, 0.8) 0%, rgba(43, 140, 255, 0.9) 100%);">
+                                            <div class="card-3d-glass"></div>
+                                            <div class="card-3d-content">
+                                                <span class="card-3d-title">1:1 Guidance</span>
+                                                <span class="card-3d-text">Personalized mentorship from experienced founders and operators</span>
+                                            </div>
+                                            <div class="card-3d-bottom">
+                                                <div class="card-3d-social-buttons">
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                                            <circle cx="12" cy="7" r="4"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="card-3d-view-more">
+                                                    <button onclick="window.location.href='contact.html'" class="card-3d-view-more-button">Get Quote</button>
+                                                    <svg class="card-3d-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="m6 9 6 6 6-6"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="card-3d-logo">
+                                                <span class="card-3d-circle card-3d-circle1"></span>
+                                                <span class="card-3d-circle card-3d-circle2"></span>
+                                                <span class="card-3d-circle card-3d-circle3"></span>
+                                                <span class="card-3d-circle card-3d-circle4"></span>
+                                                <span class="card-3d-circle card-3d-circle5">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="card-3d-svg">
+                                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                                        <circle cx="12" cy="7" r="4"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 3D Card 2 - Growth Audits -->
+                                    <div class="card-3d-parent">
+                                        <div class="card-3d" style="background: linear-gradient(135deg, rgba(142, 45, 226, 0.8) 0%, rgba(0, 224, 255, 0.9) 100%);">
+                                            <div class="card-3d-glass"></div>
+                                            <div class="card-3d-content">
+                                                <span class="card-3d-title">Growth Audits</span>
+                                                <span class="card-3d-text">Comprehensive analysis to identify key growth levers and opportunities</span>
+                                            </div>
+                                            <div class="card-3d-bottom">
+                                                <div class="card-3d-social-buttons">
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M3 3v18h18v-18h-18zm16 16h-14v-14h14v14z"/>
+                                                            <path d="M8 12h8"/>
+                                                            <path d="M12 8v8"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="card-3d-view-more">
+                                                    <button onclick="window.location.href='contact.html'" class="card-3d-view-more-button">Get Quote</button>
+                                                    <svg class="card-3d-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="m6 9 6 6 6-6"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="card-3d-logo">
+                                                <span class="card-3d-circle card-3d-circle1"></span>
+                                                <span class="card-3d-circle card-3d-circle2"></span>
+                                                <span class="card-3d-circle card-3d-circle3"></span>
+                                                <span class="card-3d-circle card-3d-circle4"></span>
+                                                <span class="card-3d-circle card-3d-circle5">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="card-3d-svg">
+                                                        <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 3D Card 3 - Fundraising -->
+                                    <div class="card-3d-parent">
+                                        <div class="card-3d" style="background: linear-gradient(135deg, rgba(43, 140, 255, 0.9) 0%, rgba(142, 45, 226, 0.8) 100%);">
+                                            <div class="card-3d-glass"></div>
+                                            <div class="card-3d-content">
+                                                <span class="card-3d-title">Fundraising Prep</span>
+                                                <span class="card-3d-text">Get investor-ready with expert guidance on your strategy and pitch</span>
+                                            </div>
+                                            <div class="card-3d-bottom">
+                                                <div class="card-3d-social-buttons">
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <line x1="12" y1="1" x2="12" y2="23"/>
+                                                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                                        </svg>
+                                                    </button>
+                                                    <button class="card-3d-social-button">
+                                                        <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                            <polyline points="9,11 12,14 22,4"/>
+                                                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="card-3d-view-more">
+                                                    <button onclick="window.location.href='contact.html'" class="card-3d-view-more-button">Get Quote</button>
+                                                    <svg class="card-3d-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="m6 9 6 6 6-6"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="card-3d-logo">
+                                                <span class="card-3d-circle card-3d-circle1"></span>
+                                                <span class="card-3d-circle card-3d-circle2"></span>
+                                                <span class="card-3d-circle card-3d-circle3"></span>
+                                                <span class="card-3d-circle card-3d-circle4"></span>
+                                                <span class="card-3d-circle card-3d-circle5">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="card-3d-svg">
+                                                        <line x1="12" y1="1" x2="12" y2="23"/>
+                                                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Hover Cards Section -->
+                            <section class="px-4 mt-16">
+                                <div class="text-center mb-12">
+                                    <h2 class="text-white text-3xl font-bold font-heading">Ready to Get Started?</h2>
+                                    <p class="text-white/70 mt-2">Choose your path to success</p>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                                    <!-- Build Your Package Card -->
+                                    <div class="hover-card-container">
+                                        <div class="hover-card" onclick="window.location.href='contact.html'" style="cursor: pointer;">
+                                            <div class="hover-card-face back">
+                                                <div class="content">
+                                                    <span class="stars"></span>
+                                                    <b class="desc text-white text-xl font-bold mb-4 block">Build Your Package</b>
+                                                    <p class="desc text-white/80 text-sm">All services available à la carte or in affordable bundles. Equity range: 3–7%</p>
+                                                </div>
+                                            </div>
+                                            <div class="hover-card-face front">
+                                                <b>Build</b>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Equity Calculator Card -->
+                                    <div class="hover-card-container">
+                                        <div class="hover-card" onclick="window.location.href='equity-calculator.html'" style="cursor: pointer;">
+                                            <div class="hover-card-face back">
+                                                <div class="content">
+                                                    <span class="stars"></span>
+                                                    <b class="desc text-white text-xl font-bold mb-4 block">Equity Calculator</b>
+                                                    <p class="desc text-white/80 text-sm">See how our equity model works for your startup. No commitment, just clarity.</p>
+                                                </div>
+                                            </div>
+                                            <div class="hover-card-face front">
+                                                <b>Calc</b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

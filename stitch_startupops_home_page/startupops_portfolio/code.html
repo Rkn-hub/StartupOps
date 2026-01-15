@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StartupOps Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Poppins:wght@700&amp;family=Nunito+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .font-poppins { font-family: 'Poppins', sans-serif; }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#0E1E3C",
+              "accent": "#2B8CFF",
+              "secondary": "#F5F7FA",
+              "highlight-cyan": "#00E0FF",
+              "highlight-purple": "#8E2DE2",
+              "background-light": "#F5F7FA",
+              "background-dark": "#0E1E3C",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"],
+              "body": ["Nunito Sans", "sans-serif"],
+              "heading": ["Poppins", "sans-serif"]
+            },
+            borderRadius: {
+                "DEFAULT": "0.5rem", 
+                "lg": "1rem", 
+                "xl": "1.25rem",
+                "2xl": "20px",
+                "full": "9999px"
+            },
+            boxShadow: {
+              'glow-blue': '0 0 15px 5px rgba(43, 140, 255, 0.3)',
+              'glow-cyan': '0 0 20px 7px rgba(0, 224, 255, 0.25)',
+              'glow-gradient': '0 0 25px 8px rgba(142, 45, 226, 0.2), 0 0 15px 5px rgba(0, 224, 255, 0.2)',
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-body text-secondary">
+<div class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col w-full max-w-[1100px] flex-1">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 px-6 sm:px-10 py-4 sticky top-0 z-50 bg-background-dark/80 backdrop-blur-lg">
+<div class="flex items-center gap-4 text-white">
+<div class="size-5 text-accent">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-white text-xl font-heading font-bold leading-tight tracking-[-0.015em]">StartupOps</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-9">
+<a class="text-white/80 hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Home</a>
+<a class="text-white/80 hover:text-white transition-colors text-sm font-medium leading-normal" href="#">About</a>
+<a class="text-white/80 hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Portfolio</a>
+<a class="text-white hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Services</a>
+<a class="text-white/80 hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Contact</a>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-accent text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-accent/90 transition-colors">
+<span class="truncate">Get Started</span>
+</button>
+</div>
+<div class="md:hidden">
+<button class="text-white p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main class="flex flex-col gap-16 py-10 sm:py-16 px-4 sm:px-0">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="flex flex-col gap-6">
+<h2 class="text-white text-4xl sm:text-5xl font-heading font-bold leading-tight tracking-[-0.033em]">Recent Collaborations</h2>
+<div class="flex flex-col gap-4">
+<div class="group relative p-6 bg-white/5 rounded-2xl border border-white/10 shadow-lg backdrop-blur-md overflow-hidden transition-all duration-300 hover:shadow-glow-gradient">
+<div class="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-highlight-cyan to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<h3 class="font-heading font-bold text-lg text-white">Purrfect Care</h3>
+<p class="text-secondary/70">Brand identity &amp; website for a pet care startup.</p>
+</div>
+<div class="group relative p-6 bg-white/5 rounded-2xl border border-white/10 shadow-lg backdrop-blur-md overflow-hidden transition-all duration-300 hover:shadow-glow-gradient">
+<div class="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-highlight-cyan to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<h3 class="font-heading font-bold text-lg text-white">RR Purification</h3>
+<p class="text-secondary/70">Digital rebranding &amp; marketing setup for MSME.</p>
+</div>
+<div class="group relative p-6 bg-white/5 rounded-2xl border border-white/10 shadow-lg backdrop-blur-md overflow-hidden transition-all duration-300 hover:shadow-glow-gradient">
+<div class="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-highlight-purple to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<h3 class="font-heading font-bold text-lg text-white">Extoll.Co</h3>
+<p class="text-secondary/70">MVP app design and launch campaign.</p>
+</div>
+<div class="group relative p-6 bg-white/5 rounded-2xl border border-white/10 shadow-lg backdrop-blur-md overflow-hidden transition-all duration-300 hover:shadow-glow-gradient">
+<div class="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-highlight-purple to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<h3 class="font-heading font-bold text-lg text-white">Food Processor</h3>
+<p class="text-secondary/70">Logo, packaging, and digital onboarding.</p>
+</div>
+</div>
+</div>
+<div class="relative p-8 bg-white/5 rounded-2xl border border-white/10 shadow-xl backdrop-blur-lg flex flex-col gap-6">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-1 bg-gradient-to-r from-highlight-cyan via-highlight-purple to-highlight-cyan blur-xl"></div>
+<div class="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none"></div>
+<h3 class="text-2xl font-heading font-bold text-center text-white">Results at a Glance</h3>
+<div class="flex flex-col gap-4 text-lg">
+<div class="flex items-center gap-3">
+<span class="text-green-400">✅</span>
+<p>4 startups launched within 3 months</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-green-400">✅</span>
+<p>2 funded through college incubators</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-green-400">✅</span>
+<p>100% client satisfaction and retention</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="flex flex-col gap-8 px-5 py-16 text-center border-t border-solid border-white/10 mt-10">
+<div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+<a class="text-secondary/70 hover:text-white transition-colors text-base font-normal leading-normal" href="#">Privacy Policy</a>
+<a class="text-secondary/70 hover:text-white transition-colors text-base font-normal leading-normal" href="#">Terms of Service</a>
+<a class="text-secondary/70 hover:text-white transition-colors text-base font-normal leading-normal" href="#">Careers</a>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-secondary/70 hover:text-white transition-colors" href="#">
+<svg fill="currentColor" height="24" viewBox="0 0 16 16" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.602.75Zm-2.6 13.01h1.447L4.87 2.148H3.28e-05l8.72 11.603Z"></path>
+</svg>
+</a>
+<a class="text-secondary/70 hover:text-white transition-colors" href="#">
+<svg fill="currentColor" height="24" viewBox="0 0 16 16" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"></path>
+</svg>
+</a>
+<a class="text-secondary/70 hover:text-white transition-colors" href="#">
+<svg fill="currentColor" height="24" viewBox="0 0 16 16" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"></path>
+</svg>
+</a>
+</div>
+<p class="text-secondary/60 text-sm font-normal leading-normal">© 2024 StartupOps. All rights reserved.</p>
+</footer>
+</div>
+</div>
+</div>
+</div>
+</body></html>

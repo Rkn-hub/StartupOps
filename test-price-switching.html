@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Switching Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+        .test { margin: 20px 0; padding: 15px; background: white; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        button { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin: 5px; }
+        .price-demo { padding: 20px; background: #f8f9fa; border-radius: 5px; margin: 10px 0; }
+        .service-item { display: flex; justify-content: space-between; padding: 10px; border: 1px solid #ddd; margin: 5px 0; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <h1>💰 Price Switching Test</h1>
+    
+    <div class="price-demo">
+        <h3>Service Pricing Comparison</h3>
+        <div id="priceComparison"></div>
+        <button onclick="showPriceComparison()">Show Price Comparison</button>
+    </div>
+
+    <div class="test">
+        <h3>Test Price Updates</h3>
+        <button onclick="testStudentPrices()">Test Student Prices</button>
+        <button onclick="testProfessionalPrices()">Test Professional Prices</button>
+    </div>
+
+    <div id="results"></div>
+
+    <script src="js/equity-calculator-new.js"></script>
+    <script>
+        function addResult(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = `test ${type}`;
+            div.innerHTML = message;
+            document.getElementById('results').appendChild(div);
+        }
+
+        function showPriceComparison() {
+            const comparisonDiv = document.getElementById('priceComparison');
+            comparisonDiv.innerHTML = '';
+            
+            if (!window.EquityCalculatorNew || !window.EquityCalculatorNew.SERVICES) {
+                comparisonDiv.innerHTML = '<p style="color: red;">Calculator not loaded!</p>';
+                return;
+            }
+            
+            const services = window.EquityCalculatorNew.SERVICES;
+            const serviceNames = Object.keys(services.STUDENT);
+            
+            serviceNames.forEach(service => {
+                const studentPrice = services.STUDENT[service];
+                const proPrice = services.PRO[service];
+                const difference = proPrice - studentPrice;
+                const percentIncrease = ((difference / studentPrice) * 100).toFixed(0);
+                
+                const serviceDiv = document.createElement('div');
+                serviceDiv.className = 'service-item';
+                serviceDiv.innerHTML = `
+                    <strong>${service.charAt(0).toUpperCase() + service.slice(1)}</strong>
+                    <span>Student: ₹${studentPrice.toLocaleString()} | Professional: ₹${proPrice.toLocaleString()} (+${percentIncrease}%)</span>
+                `;
+                comparisonDiv.appendChild(serviceDiv);
+            });
+        }
+
+        function testStudentPrices() {
+            document.getElementById('results').innerHTML = '';
+            addResult('<h2>🎓 Testing Student Prices</h2>');
+            
+            if (!window.EquityCalculatorNew || !window.EquityCalculatorNew.SERVICES) {
+                addResult('❌ Calculator not loaded!', 'error');
+                return;
+            }
+            
+            const studentServices = window.EquityCalculatorNew.SERVICES.STUDENT;
+            
+            addResult('<h3>Student Pricing:</h3>');
+            Object.entries(studentServices).forEach(([service, price]) => {
+                addResult(`${service}: ₹${price.toLocaleString()}`, 'success');
+            });
+            
+            // Test calculation with student prices
+            try {
+                const result = window.EquityCalculatorNew.calculateAccurateEquity(
+                    ['mvp', 'branding'], 50, 'mvp_building', 'HIGH', 'STUDENT'
+                );
+                
+                addResult('<h3>Sample Calculation (MVP + Branding):</h3>');
+                addResult(`Total Service Price: ₹${result.servicePrice.toLocaleString()}`, 'info');
+                addResult(`Cash Payment: ₹${result.cashPayable.toLocaleString()}`, 'info');
+                addResult(`Equity: ${result.equityPercent}%`, 'success');
+                
+            } catch (error) {
+                addResult(`❌ Calculation Error: ${error.message}`, 'error');
+            }
+        }
+
+        function testProfessionalPrices() {
+            document.getElementById('results').innerHTML = '';
+            addResult('<h2>💼 Testing Professional Prices</h2>');
+            
+            if (!window.EquityCalculatorNew || !window.EquityCalculatorNew.SERVICES) {
+                addResult('❌ Calculator not loaded!', 'error');
+                return;
+            }
+            
+            const proServices = window.EquityCalculatorNew.SERVICES.PRO;
+            
+            addResult('<h3>Professional Pricing:</h3>');
+            Object.entries(proServices).forEach(([service, price]) => {
+                addResult(`${service}: ₹${price.toLocaleString()}`, 'success');
+            });
+            
+            // Test calculation with professional prices
+            try {
+                const result = window.EquityCalculatorNew.calculateAccurateEquity(
+                    ['mvp', 'branding'], 50, 'mvp_building', 'HIGH', 'PRO'
+                );
+                
+                addResult('<h3>Sample Calculation (MVP + Branding):</h3>');
+                addResult(`Total Service Price: ₹${result.servicePrice.toLocaleString()}`, 'info');
+                addResult(`Cash Payment: ₹${result.cashPayable.toLocaleString()}`, 'info');
+                addResult(`Equity: ${result.equityPercent}%`, 'success');
+                
+                // Compare with student mode
+                const studentResult = window.EquityCalculatorNew.calculateAccurateEquity(
+                    ['mvp', 'branding'], 50, 'mvp_building', 'HIGH', 'STUDENT'
+                );
+                
+                addResult('<h3>📊 Comparison with Student Mode:</h3>');
+                addResult(`Student Total: ₹${studentResult.servicePrice.toLocaleString()} vs Professional: ₹${result.servicePrice.toLocaleString()}`, 'info');
+                addResult(`Student Equity: ${studentResult.equityPercent}% vs Professional: ${result.equityPercent}%`, 'info');
+                
+            } catch (error) {
+                addResult(`❌ Calculation Error: ${error.message}`, 'error');
+            }
+        }
+
+        // Auto-show comparison on load
+        window.addEventListener('load', function() {
+            setTimeout(showPriceComparison, 500);
+        });
+    </script>
+</body>
+</html>

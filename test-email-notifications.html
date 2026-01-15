@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Email Notifications - StartupOps</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background: #64FFDA;
+            color: #000;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #4fd1c7;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Test Email Notifications</h1>
+        <p>Use this form to test if email notifications are working correctly.</p>
+        
+        <form id="testForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" value="Test User" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" value="test@example.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" value="Testing Email Notifications" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" rows="4">This is a test message to verify that email notifications are working correctly. If you receive this, the system is set up properly!</textarea>
+            </div>
+            
+            <button type="submit">Send Test Email</button>
+        </form>
+        
+        <div id="status" class="status"></div>
+        
+        <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 5px;">
+            <h3>📋 Setup Checklist:</h3>
+            <ul>
+                <li>✅ Email notification system is configured</li>
+                <li id="zapier-status">❓ Zapier webhook URL needs to be configured</li>
+                <li>✅ Contact form is connected to notifications</li>
+                <li>✅ Supabase integration is working</li>
+            </ul>
+            
+            <h3>🔧 Next Steps:</h3>
+            <ol>
+                <li>Set up Zapier webhook (see <code>ZAPIER_SETUP_QUICK_GUIDE.md</code>)</li>
+                <li>Update webhook URL in <code>js/email-notifications.js</code></li>
+                <li>Test this form again</li>
+                <li>Check your email at startup.ops.co@gmail.com</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Include the email notification system -->
+    <script src="js/email-notifications.js"></script>
+    <script src="js/supabase-client.js"></script>
+
+    <script>
+        document.getElementById('testForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const statusDiv = document.getElementById('status');
+            const button = e.target.querySelector('button');
+            
+            // Show loading state
+            button.textContent = 'Sending...';
+            button.disabled = true;
+            statusDiv.style.display = 'block';
+            statusDiv.className = 'status info';
+            statusDiv.textContent = 'Testing email notification system...';
+            
+            // Prepare test data
+            const formData = {
+                name: document.getElementById('name').value,
+                contact: document.getElementById('email').value,
+                stage: 'Test Inquiry',
+                services: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+            
+            try {
+                // Test the notification system
+                const result = await window.StartupOpsNotifications.sendContactNotification(formData);
+                
+                if (result.success) {
+                    statusDiv.className = 'status success';
+                    statusDiv.innerHTML = `
+                        <strong>✅ Success!</strong><br>
+                        Email notification sent via ${result.method}.<br>
+                        Check your email at startup.ops.co@gmail.com
+                    `;
+                    
+                    // Update checklist
+                    document.getElementById('zapier-status').innerHTML = '✅ Zapier webhook is working!';
+                } else {
+                    throw new Error(result.errors ? JSON.stringify(result.errors) : 'Unknown error');
+                }
+            } catch (error) {
+                console.error('Test failed:', error);
+                statusDiv.className = 'status error';
+                statusDiv.innerHTML = `
+                    <strong>❌ Test Failed</strong><br>
+                    ${error.message}<br><br>
+                    <strong>Likely cause:</strong> Zapier webhook URL not configured.<br>
+                    Please follow the setup guide in <code>ZAPIER_SETUP_QUICK_GUIDE.md</code>
+                `;
+            } finally {
+                // Reset button
+                button.textContent = 'Send Test Email';
+                button.disabled = false;
+            }
+        });
+        
+        // Check if webhook is configured
+        window.addEventListener('load', function() {
+            if (window.StartupOpsNotifications) {
+                // This is a simple check - in real implementation, we'd check the actual config
+                console.log('Email notification system loaded successfully');
+            }
+        });
+    </script>
+</body>
+</html>

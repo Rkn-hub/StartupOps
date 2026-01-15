@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html class="dark overflow-x-hidden" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>StartupOps - Let's Build Together</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Poppins:wght@700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#212121",
+                        "background-dark": "#212121",
+                        "accent": "#64FFDA",
+                        "text-primary": "#FFFFFF",
+                        "text-secondary": "#B0B0B0",
+                        "deep-navy": "#212121",
+                        "electric-blue": "#64FFDA",
+                        "soft-gray": "#F5F7FA",
+                        "neon-cyan": "#64FFDA",
+                        "gradient-purple": "#64FFDA",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "heading": ["Poppins", "sans-serif"],
+                        "body": ["Nunito Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem", 
+                        "lg": "1rem", 
+                        "xl": "1.5rem",
+                        "20px": "20px",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'glow-cyan': '0 0 15px 0 rgba(0, 224, 255, 0.3)',
+                        'glow-blue': '0 0 20px 0 rgba(43, 140, 255, 0.4)',
+                        'glow-purple': '0 0 15px 0 rgba(142, 45, 226, 0.3)',
+                    }
+                },
+            },
+        }
+    </script>
+    <!-- Standardized Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #64FFDA, #64FFDA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        .glassmorphism {
+            background: rgba(42, 42, 42, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+        }
+        
+        /* Original Contact Form Styles */
+        .glassmorphism {
+            background: rgba(245, 247, 250, 0.05);
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(245, 247, 250, 0.1);
+        }
+        .form-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #64FFDA;
+            border-color: #64FFDA;
+        }
+        .neon-line {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            border: 1px solid transparent;
+            background: linear-gradient(135deg, #64FFDA, #64FFDA) border-box;
+            -webkit-mask:
+                linear-gradient(#fff 0 0) padding-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
+        /* Hover Effect Contact Cards */
+        .hover-card {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            color: white;
+            text-align: center;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .hover-card.email-card {
+            background: linear-gradient(135deg, #64FFDA 0%, #64FFDA 100%);
+        }
+        
+        .hover-card.phone-card {
+            background: linear-gradient(135deg, #64FFDA 0%, #64FFDA 100%);
+        }
+        
+        .hover-card::before,
+        .hover-card::after {
+            position: absolute;
+            content: "";
+            width: 20%;
+            height: 20%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.5s;
+            border-radius: 15px;
+        }
+        
+        .hover-card.email-card::before,
+        .hover-card.email-card::after {
+            background: linear-gradient(135deg, rgba(0, 224, 255, 0.3) 0%, rgba(43, 140, 255, 0.3) 100%);
+        }
+        
+        .hover-card.phone-card::before,
+        .hover-card.phone-card::after {
+            background: linear-gradient(135deg, rgba(142, 45, 226, 0.3) 0%, rgba(43, 140, 255, 0.3) 100%);
+        }
+        
+        .hover-card::before {
+            top: 0;
+            right: 0;
+            border-radius: 0 25px 0 100%;
+        }
+        
+        .hover-card::after {
+            bottom: 0;
+            left: 0;
+            border-radius: 0 100% 0 25px;
+        }
+        
+        .hover-card:hover::before,
+        .hover-card:hover::after {
+            width: 100%;
+            height: 100%;
+            border-radius: 25px;
+            transition: all 0.5s;
+        }
+        
+        .hover-card.email-card:hover::after {
+            content: "SEND EMAIL";
+            background: linear-gradient(135deg, rgba(0, 224, 255, 0.9) 0%, rgba(43, 140, 255, 0.9) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .hover-card.phone-card:hover::after {
+            content: "CALL NOW";
+            background: linear-gradient(135deg, rgba(142, 45, 226, 0.9) 0%, rgba(43, 140, 255, 0.9) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .hover-card-content {
+            z-index: 10;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .hover-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .hover-card-title {
+            color: #000000;
+            font-size: 20px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+        
+        .hover-card-text {
+            color: #000000;
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 1;
+            line-height: 1.3;
+            word-break: break-all;
+            max-width: 100%;
+        }
+        
+        /* Original Contact Form Styles */
+        .form {
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+            font-family: inherit;
+            gap: 10px;
+            padding-inline: 2em;
+            padding-bottom: 0.4em;
+            background-color: #2a2a2a;
+            border-radius: 20px;
+        }
+        
+        .form-heading {
+            text-align: center;
+            margin: 2em;
+            color: #64FFDA;
+            font-size: 1.2em;
+            background-color: transparent;
+            align-self: center;
+        }
+        
+        .form-field {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5em;
+            border-radius: 10px;
+            padding: 0.6em;
+            border: none;
+            outline: none;
+            color: white;
+            background-color: #2a2a2a;
+            box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+        }
+        
+        .input-field {
+            background: none;
+            border: none;
+            outline: none;
+            width: 100%;
+            color: #CCD6F6;
+            padding-inline: 1em;
+        }
+        
+        .input-field::placeholder {
+            color: rgba(204, 214, 246, 0.5);
+        }
+        
+        .sendMessage-btn {
+            cursor: pointer;
+            margin-bottom: 3em;
+            padding: 1em;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            color: #64FFDA;
+            font-weight: bold;
+            outline: 1px solid #64FFDA;
+            transition: all ease-in-out 0.3s;
+        }
+        
+        .sendMessage-btn:hover {
+            transition: all ease-in-out 0.3s;
+            background-color: #64FFDA;
+            color: #000;
+            cursor: pointer;
+            box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+        }
+        
+        .form-card1 {
+            background-image: linear-gradient(163deg, #64FFDA 0%, #64FFDA 100%);
+            border-radius: 22px;
+            transition: all 0.3s;
+        }
+        
+        .form-card2 {
+            border-radius: 0;
+            transition: all 0.2s;
+        }
+        
+        .form-card2:hover {
+            transform: scale(0.98);
+            border-radius: 20px;
+        }
+    </style>
+    
+    <!-- Supabase Integration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Email Notifications -->
+    <script src="js/email-notifications.js"></script>
+</head>
+<body class="bg-deep-navy font-body text-soft-gray overflow-x-hidden">
+    <div class="relative w-full overflow-x-hidden">
+        <div class="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-b from-deep-navy/30 to-transparent z-0"></div>
+        <div class="absolute top-[-200px] right-[-200px] w-[500px] h-[500px] bg-electric-blue/10 rounded-full blur-3xl z-0"></div>
+        <div class="absolute top-[300px] left-[-250px] w-[600px] h-[600px] bg-electric-blue/5 rounded-full blur-3xl z-0"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Navigation -->
+            <header class="flex items-center justify-between py-6">
+                <div class="flex items-center gap-4 text-white">
+                    <div class="size-6 text-electric-blue">
+                        <svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-white text-xl font-bold font-heading">StartupOps</h2>
+                </div>
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex items-center gap-8 text-sm">
+                    <a class="text-gray-300 hover:text-white transition-colors" href="index.html">Home</a>
+                    <a class="text-gray-300 hover:text-white transition-colors" href="services.html">Services</a>
+                    <a class="text-gray-300 hover:text-white transition-colors" href="portfolio.html">Portfolio</a>
+                    <a class="text-gray-300 hover:text-white transition-colors" href="about.html">About</a>
+                    <a class="text-gray-300 hover:text-white transition-colors" href="how-it-works.html">How It Works</a>
+                </nav>
+                <button onclick="window.location.href='contact.html'" class="hidden md:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-deep-navy/80 border border-electric-blue/30 text-white text-sm font-semibold leading-normal hover:bg-deep-navy transition-all hover:shadow-lg hover:shadow-electric-blue/20">
+                    <span class="truncate">Join Fellowship</span>
+                </button>
+            </header>
+        </div>
+    </div>
+    
+    <div class="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden p-4 sm:p-6 md:p-8">
+        <div class="absolute -top-40 -left-40 h-[400px] w-[400px] rounded-full bg-gradient-to-br from-neon-cyan/20 to-gradient-purple/20 blur-3xl opacity-30"></div>
+        <div class="absolute -bottom-40 -right-40 h-[400px] w-[400px] rounded-full bg-gradient-to-tl from-electric-blue/20 to-deep-navy blur-3xl opacity-40"></div>
+        
+        <main class="z-10 flex w-full max-w-5xl flex-1 flex-col items-center justify-center px-4 py-16">
+            <div class="grid w-full grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+                <div class="flex flex-col justify-center text-center lg:text-left">
+                    <h1 class="font-heading text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl">Let's Build Together.</h1>
+                    <p class="mt-4 max-w-md text-lg text-soft-gray/80 lg:max-w-none">Whether you're a student founder, early-stage entrepreneur, or small business — we're here to make your ideas real.</p>
+                    
+                    <div class="relative mt-8 w-full">
+                        <div class="form-card1">
+                            <div class="form-card2">
+                                <form class="form" onsubmit="handleFormSubmit(event)">
+                                    <p class="form-heading">Get In Touch</p>
+                                    
+                                    <div class="form-field">
+                                        <input required placeholder="Name" class="input-field" type="text" id="name" />
+                                    </div>
+                                    
+                                    <div class="form-field">
+                                        <input required placeholder="Email" class="input-field" type="email" id="email" />
+                                    </div>
+                                    
+                                    <div class="form-field">
+                                        <input required placeholder="Subject" class="input-field" type="text" id="subject" />
+                                    </div>
+                                    
+                                    <div class="form-field">
+                                        <textarea required placeholder="Message" cols="30" rows="3" class="input-field" id="message"></textarea>
+                                    </div>
+                                    
+                                    <button type="submit" class="sendMessage-btn">Send Message</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
+                        <a class="flex h-12 w-full items-center justify-center rounded-[12px] border border-white/20 bg-white/10 px-6 text-base font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white/20 hover:shadow-glow-purple sm:w-auto" href="equity-calculator.html">
+                            👉 Try Equity Calculator
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col items-center justify-center text-center lg:items-start lg:text-left">
+                    <!-- Hover Effect Contact Cards - Single Row Layout -->
+                    <div class="w-full mb-8">
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto lg:mx-0">
+                            <!-- Email Card -->
+                            <a href="mailto:startup.ops.co@gmail.com" class="hover-card email-card">
+                                <div class="hover-card-content">
+                                    <div class="hover-card-icon">✉️</div>
+                                    <div class="hover-card-title">Email Us</div>
+                                    <div class="hover-card-text">startup.ops.co@gmail.com</div>
+                                </div>
+                            </a>
+
+                            <!-- Phone Card -->
+                            <a href="tel:+919315158312" class="hover-card phone-card">
+                                <div class="hover-card-content">
+                                    <div class="hover-card-icon">📞</div>
+                                    <div class="hover-card-title">Call Us</div>
+                                    <div class="hover-card-text">+91 93151 58312</div>
+                                </div>
+                            </a>
+
+                            <!-- WhatsApp Card -->
+                            <a href="https://wa.me/919315158312" class="hover-card phone-card" target="_blank">
+                                <div class="hover-card-content">
+                                    <div class="hover-card-icon">💬</div>
+                                    <div class="hover-card-title">WhatsApp</div>
+                                    <div class="hover-card-text">+91 93151 58312</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-6">
+                        <a class="group flex items-center gap-3 transition-colors hover:text-white" href="#">
+                            <span class="text-2xl">📍</span>
+                            <div>
+                                <p class="font-bold text-white">LinkedIn</p>
+                                <p class="text-sm text-gray-300 group-hover:text-electric-blue">@StartupOpsIndia</p>
+                            </div>
+                        </a>
+                        <a class="group flex items-center gap-3 transition-colors hover:text-white" href="#">
+                            <span class="text-2xl">📷</span>
+                            <div>
+                                <p class="font-bold text-white">Instagram</p>
+                                <p class="text-sm text-gray-300 group-hover:text-electric-blue">@startupops.studio</p>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="mt-12 p-6 glassmorphism rounded-20px">
+                        <h3 class="font-heading text-xl font-bold text-white mb-4">Why Choose StartupOps?</h3>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-center gap-2">
+                                <span class="text-neon-cyan">✓</span>
+                                <span>3-7% equity model - aligned with your success</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-neon-cyan">✓</span>
+                                <span>30-50% cheaper than traditional agencies</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-neon-cyan">✓</span>
+                                <span>End-to-end execution from idea to scale</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-neon-cyan">✓</span>
+                                <span>Expert team of designers, developers & marketers</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="mt-12 w-full border-t border-white/10 pt-8 font-heading text-xl font-bold italic text-white">"Execution meets alignment — we build startups that build India."</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Supabase Client Script -->
+    <script src="js/supabase-client.js"></script>
+    
+    <script>
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            // Show loading state
+            const submitButton = event.target.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                contact: document.getElementById('email').value,
+                stage: 'General Inquiry',
+                services: document.getElementById('subject').value,
+                message: document.getElementById('message')?.value || ''
+            };
+            
+            try {
+                // Submit to Supabase
+                const result = await window.StartupOpsDB.submitContactForm(formData);
+                
+                if (result.success) {
+                    // Send email notification
+                    try {
+                        await window.StartupOpsNotifications.sendContactNotification(formData);
+                    } catch (error) {
+                        console.log('Email notification failed (non-critical):', error);
+                    }
+                    
+                    // Show success message
+                    showNotification('Thank you for your interest! We\'ll get back to you within 24 hours.', 'success');
+                    
+                    // Reset form
+                    event.target.reset();
+                    
+                    // Track conversion
+                    if (window.gtag) {
+                        gtag('event', 'form_submit', {
+                            event_category: 'engagement',
+                            event_label: 'contact_form'
+                        });
+                    }
+                } else {
+                    throw new Error(result.error);
+                }
+            } catch (error) {
+                console.error('Form submission error:', error);
+                showNotification('Sorry, there was an error sending your message. Please try again or contact us directly.', 'error');
+            } finally {
+                // Reset button state
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }
+        }
+        
+        function showNotification(message, type = 'info') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg max-w-sm transition-all duration-300 ${
+                type === 'success' ? 'bg-green-600 text-white' : 
+                type === 'error' ? 'bg-red-600 text-white' : 
+                'bg-blue-600 text-white'
+            }`;
+            notification.textContent = message;
+            
+            // Add to page
+            document.body.appendChild(notification);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 5000);
+        }
+        
+        // Form validation
+        function validateForm() {
+            const requiredFields = ['name', 'contact', 'stage', 'services'];
+            let isValid = true;
+            
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field.value.trim()) {
+                    field.classList.add('border-red-500');
+                    isValid = false;
+                } else {
+                    field.classList.remove('border-red-500');
+                }
+            });
+            
+            return isValid;
+        }
+        
+        // Add real-time validation
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            const inputs = form.querySelectorAll('input, select, textarea');
+            
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    if (this.hasAttribute('required') && !this.value.trim()) {
+                        this.classList.add('border-red-500');
+                    } else {
+                        this.classList.remove('border-red-500');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StartupOps - Empowering India’s Next-Generation Founders</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .glassmorphism {
+            background: rgba(23, 30, 46, 0.6);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(43, 140, 255, 0.2);
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin 6s linear infinite;
+        }
+        .animate-spin-slow-reverse {
+            animation: spin 6s linear infinite reverse;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0E1E3C",
+                        "accent": "#2B8CFF",
+                        "secondary": "#F5F7FA",
+                        "highlight-start": "#00E0FF",
+                        "highlight-end": "#8E2DE2",
+                        "background-dark": "#0E1E3C",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "heading": ["Poppins", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.25rem", // 20px
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'glow': '0 0 15px rgba(43, 140, 255, 0.3), 0 0 25px rgba(43, 140, 255, 0.2)',
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-dark font-display text-secondary">
+<div class="relative min-h-screen w-full flex-col">
+<div class="relative flex flex-col items-center">
+<header class="sticky top-4 z-50 mt-4 flex w-full max-w-5xl items-center justify-between whitespace-nowrap rounded-xl border px-10 py-3 glassmorphism">
+<div class="flex items-center gap-4 text-white">
+<div class="size-5">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z"></path>
+</svg>
+</div>
+<h2 class="font-heading text-lg font-bold leading-tight tracking-[-0.015em] text-white">StartupOps</h2>
+</div>
+<div class="hidden items-center gap-9 md:flex">
+<a class="text-sm font-medium leading-normal text-secondary transition-colors hover:text-accent" href="#">About Us</a>
+<a class="text-sm font-medium leading-normal text-secondary transition-colors hover:text-accent" href="#">Team</a>
+<a class="text-sm font-medium leading-normal text-secondary transition-colors hover:text-accent" href="#">Contact</a>
+</div>
+</header>
+<main class="w-full max-w-5xl px-4 sm:px-6 lg:px-8">
+<section class="flex min-h-[calc(100vh-100px)] flex-col items-center justify-center gap-8 py-20 text-center">
+<div class="flex flex-col items-center gap-4">
+<h1 class="font-heading text-4xl font-bold leading-tight tracking-tighter text-white md:text-6xl">Empowering India’s Next-Generation Founders</h1>
+<h2 class="max-w-3xl text-base font-normal leading-normal text-secondary/80 md:text-lg">We are a hybrid startup studio dedicated to fostering innovation, trust, and collaboration to build the future.</h2>
+</div>
+<button class="flex h-12 min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-accent px-5 text-base font-bold leading-normal tracking-[0.015em] text-white transition-all hover:shadow-glow">
+<span class="truncate">Get in Touch</span>
+</button>
+</section>
+<section class="py-20" id="about">
+<div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+<div class="flex flex-col gap-8">
+<div class="group relative rounded-xl p-8 glassmorphism transition-all duration-300 hover:shadow-glow">
+<div class="absolute left-0 top-0 h-full w-1.5 rounded-l-xl bg-gradient-to-b from-highlight-start to-highlight-end"></div>
+<h3 class="font-heading text-2xl font-bold text-white mb-3">Our Vision</h3>
+<p class="text-secondary/80 leading-relaxed">To power India’s next generation of founders by making startup execution accessible, reliable, and growth-aligned.</p>
+</div>
+<div class="group relative rounded-xl p-8 glassmorphism transition-all duration-300 hover:shadow-glow">
+<div class="absolute left-0 top-0 h-full w-1.5 rounded-l-xl bg-gradient-to-b from-accent to-highlight-start"></div>
+<h3 class="font-heading text-2xl font-bold text-white mb-3">Our Mission</h3>
+<p class="text-secondary/80 leading-relaxed">To deliver hands-on execution and mentorship for early-stage startups, starting from college campuses to small towns nationwide.</p>
+</div>
+</div>
+<div class="group relative rounded-xl p-8 glassmorphism transition-all duration-300 hover:shadow-glow flex flex-col">
+<h3 class="font-heading text-2xl font-bold text-white mb-3">Who We Are</h3>
+<p class="text-secondary/80 leading-relaxed mb-6">StartupOps is a collective of tech, creative, and legal professionals who believe founders deserve better support — without breaking the bank. We bridge the gap between idea and execution, guiding founders every step of the way.</p>
+<div class="mt-auto pt-6 border-t border-white/10">
+<h4 class="font-heading text-lg font-bold text-white mb-4">Core Values</h4>
+<div class="grid grid-cols-2 gap-4 text-sm">
+<div class="flex items-center gap-2">
+<span class="text-xl">⚙️</span>
+<span class="text-secondary/90">Execution First</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-xl">💬</span>
+<span class="text-secondary/90">Transparency &amp; Trust</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-xl">🌱</span>
+<span class="text-secondary/90">Growth for All</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-xl">🧠</span>
+<span class="text-secondary/90">Smart Work &gt; Hard Work</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20" id="team">
+<div class="text-center mb-12">
+<h2 class="font-heading text-3xl font-bold leading-tight tracking-[-0.015em] text-white md:text-4xl">Meet the Innovators</h2>
+<p class="mt-4 max-w-2xl mx-auto text-secondary/80">Our team combines deep industry expertise with a passion for building the future, one startup at a time.</p>
+</div>
+<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+<div class="group relative overflow-hidden rounded-xl glassmorphism transition-all duration-300 hover:shadow-glow">
+<div class="absolute -top-1/2 -left-1/2 h-[200%] w-[200%] bg-gradient-to-r from-transparent via-highlight-start/30 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 animate-spin-slow"></div>
+<div class="relative p-6 text-center">
+<img class="mx-auto mb-4 h-28 w-28 rounded-full object-cover ring-2 ring-accent" data-alt="Photo of Priya Sharma" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqH1LarTe4bYdOekzOuDUBMNipFsjog6NI6oLHT3_nSOX586oT-z_anqCeBXmb8yrSd2XqILvW6gXJbJkQnf9WUfxNAEC6quVGr-_E5XgAHm9VxngO9WuP_d5BJ3WbElQp8_Buf6L0N16zE6-B5l1mQoJwfc242LfwiboQCd1ZGgoKZ2NdZ_nINvTD1zaI-LyTsQ4pOC32Htfe8D0aTKTHFfAcXKP0uI9cWsqqUqt55Q4NZ_Wc02EQ5RDHCN_xrtqow0ah89EOnPM"/>
+<h3 class="font-heading text-xl font-bold text-white">Priya Sharma</h3>
+<p class="text-sm text-accent">Founder &amp; CEO</p>
+<div class="mt-4 flex justify-center gap-4 text-secondary/80">
+<a class="transition-colors hover:text-accent" href="#"><span class="material-symbols-outlined text-xl">alternate_email</span></a>
+<a class="transition-colors hover:text-accent" href="#"><span class="material-symbols-outlined text-xl">link</span></a>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl glassmorphism transition-all duration-300 hover:shadow-glow">
+<div class="absolute -top-1/2 -left-1/2 h-[200%] w-[200%] bg-gradient-to-r from-transparent via-highlight-start/30 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 animate-spin-slow-reverse"></div>
+<div class="relative p-6 text-center">
+<img class="mx-auto mb-4 h-28 w-28 rounded-full object-cover ring-2 ring-accent" data-alt="Photo of Rohan Gupta" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABHqijzupKln1oIdVJVKZBjl1iTqroymvpd7nSIRr97w56n4uUAWG0VAO8_8h1jpgrmkjzpNV41ztwo-pZDXSyZ-qxY9yllL9gLFHH0xVIVkdh7TPvaWfAyKGTdoSdtV1xd16E5v69_lKNALqXpTQYVb-iSJuOXbmpzPZe-fLFTw1d8AYzF5wYH6kisRQJ2foNdfhIKvpTo9Z6UKePVMqem1ELuzuhm0E9jltStNP-0Lp1RTt40uqbOCv25xQ43wCQr_03KmyJJ7o"/>
+<h3 class="font-heading text-xl font-bold text-white">Rohan Gupta</h3>
+<p class="text-sm text-accent">Chief Technology Officer</p>
+<div class="mt-4 flex justify-center gap-4 text-secondary/80">
+<a class="transition-colors hover:text-accent" href="#"><span class="material-symbols-outlined text-xl">alternate_email</span></a>
+<a class="transition-colors hover:text-accent" href="#"><span class="material-symbols-outlined text-xl">link</span></a>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl glassmorphism transition-all duration-300 hover:shadow-glow">
+<div class="absolute -top-1/2 -left-1/2 h-[200%] w-[200%] bg-gradient-to-r from-transparent via-highlight-start/30 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 animate-spin-slow"></div>
+<div class="relative p-6 text-center">
+<img class="mx-auto mb-4 h-28 w-28 rounded-full object-cover ring-2 ring-accent" data-alt="Photo of Anika Patel" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-UQZofRrwhKundFOxj1xt600otO9jAv9LBNKbTxFBUyxdo84PmFgB0HWhRfSYgbKIEBB54fId8ubN-WIl608V1H2ZAFJj6giXER5ycID7brtzWgf7irvgSNS0jBnKrTgg2_XnHPMMfcnGWh-44VUBsZ7GLiahXFdE4J6r5ULJlW4SNnauyTDgD0bNy1d3wRrWww7fc0N6HEOxkja07K1hRCyAtl-OhyTWpif4TYtn-sSkzgb3pMXJnkhuI0TIVv2WS-JlWIBuE7w"/>
+<h3 class="font-heading text-xl font-bold text-white">Anika Patel</h3>
+<p class="text-sm text-accent">Lead Mentor</p>
+<div class="mt-4 flex justify-center gap-4 text-secondary/80">
+<a class="transition-colors hover:text-accent" href="#"><span class="material-symbols-outlined text-xl">alternate_email</span></a>
+<a class="transition-colors hover:text-accent" href="#"><span class="material-symbols-outlined text-xl">link</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+</div>
+
+</body></html>

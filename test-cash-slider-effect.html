@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Slider Effect Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+        .test { margin: 20px 0; padding: 15px; background: white; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        .warning { background: #fff3cd; color: #856404; }
+        button { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin: 5px; }
+        table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>💰 Cash Slider Effect Test</h1>
+    <p>Testing if changing the cash percentage actually affects equity calculations.</p>
+    
+    <button onclick="testCashSliderEffect()">Test Cash Slider Impact</button>
+    <button onclick="testMinimumCashLimits()">Test Minimum Cash Limits</button>
+    
+    <div id="results"></div>
+
+    <script src="js/equity-calculator-new.js"></script>
+    <script>
+        function addResult(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = `test ${type}`;
+            div.innerHTML = message;
+            document.getElementById('results').appendChild(div);
+        }
+
+        function testCashSliderEffect() {
+            document.getElementById('results').innerHTML = '';
+            addResult('<h2>🎯 Testing Cash Slider Effect</h2>');
+            
+            if (!window.EquityCalculatorNew) {
+                addResult('❌ Calculator not loaded!', 'error');
+                return;
+            }
+            
+            // Test with same services but different cash percentages
+            const testServices = ['mvp', 'branding']; // ₹90K + ₹30K = ₹120K (student)
+            const stage = 'mvp_building';
+            const commitment = 'HIGH';
+            const mode = 'STUDENT';
+            
+            addResult('<h3>Test Setup:</h3>');
+            addResult(`Services: MVP + Branding (₹1,20,000 total in student mode)`, 'info');
+            addResult(`Stage: MVP Building (1.2x multiplier)`, 'info');
+            addResult(`Commitment: High (1.1x multiplier)`, 'info');
+            addResult(`Expected ASV: ₹1,20,000 × 1.2 × 1.1 = ₹1,58,400`, 'info');
+            
+            // Test different cash percentages
+            const cashPercentages = [20, 30, 50, 70, 90];
+            
+            addResult('<h3>📊 Results by Cash Percentage:</h3>');
+            
+            let tableHTML = `
+                <table>
+                    <tr>
+                        <th>Cash %</th>
+                        <th>Cash Amount</th>
+                        <th>Equity Value</th>
+                        <th>Equity %</th>
+                        <th>Deal Type</th>
+                        <th>Notes</th>
+                    </tr>
+            `;
+            
+            cashPercentages.forEach(cashPercent => {
+                try {
+                    const result = window.EquityCalculatorNew.calculateAccurateEquity(
+                        testServices, cashPercent, stage, commitment, mode
+                    );
+                    
+                    const equityValue = result.adjustedValue - result.cashPayable;
+                    const actualCashPercent = ((result.cashPayable / result.adjustedValue) * 100).toFixed(1);
+                    
+                    let notes = '';
+                    if (actualCashPercent != cashPercent) {
+                        notes = `Adjusted to ${actualCashPercent}% (minimum applied)`;
+                    }
+                    
+                    tableHTML += `
+                        <tr>
+                            <td>${cashPercent}%</td>
+                            <td>₹${result.cashPayable.toLocaleString()}</td>
+                            <td>₹${equityValue.toLocaleString()}</td>
+                            <td>${result.equityPercent}%</td>
+                            <td>${result.dealType}</td>
+                            <td>${notes}</td>
+                        </tr>
+                    `;
+                    
+                } catch (error) {
+                    tableHTML += `
+                        <tr>
+                            <td>${cashPercent}%</td>
+                            <td colspan="5" style="color: red;">Error: ${error.message}</td>
+                        </tr>
+                    `;
+                }
+            });
+            
+            tableHTML += '</table>';
+            addResult(tableHTML, 'info');
+            
+            // Test if equity changes
+            try {
+                const result20 = window.EquityCalculatorNew.calculateAccurateEquity(testServices, 20, stage, commitment, mode);
+                const result90 = window.EquityCalculatorNew.calculateAccurateEquity(testServices, 90, stage, commitment, mode);
+                
+                if (result20.equityPercent !== result90.equityPercent) {
+                    addResult('✅ <strong>SUCCESS: Cash slider affects equity calculation!</strong>', 'success');
+                    addResult(`20% cash → ${result20.equityPercent}% equity | 90% cash → ${result90.equityPercent}% equity`, 'success');
+                } else {
+                    addResult('⚠️ <strong>WARNING: Cash slider may not be working properly</strong>', 'warning');
+                    addResult(`Both 20% and 90% cash result in ${result20.equityPercent}% equity`, 'warning');
+                }
+                
+            } catch (error) {
+                addResult(`❌ Comparison Error: ${error.message}`, 'error');
+            }
+        }
+
+        function testMinimumCashLimits() {
+            document.getElementById('results').innerHTML = '';
+            addResult('<h2>🔒 Testing Minimum Cash Limits</h2>');
+            
+            // Test student vs professional minimum cash requirements
+            const testServices = ['mvp'];
+            const stage = 'idea';
+            const commitment = 'MEDIUM';
+            
+            addResult('<h3>Student Mode (15% minimum):</h3>');
+            try {
+                const studentResult = window.EquityCalculatorNew.calculateAccurateEquity(
+                    testServices, 10, stage, commitment, 'STUDENT' // Try 10%, should be adjusted to 15%
+                );
+                
+                const actualPercent = ((studentResult.cashPayable / studentResult.adjustedValue) * 100).toFixed(1);
+                addResult(`Requested: 10% | Actual: ${actualPercent}% | Cash: ₹${studentResult.cashPayable.toLocaleString()}`, 'info');
+                
+                if (actualPercent >= 15) {
+                    addResult('✅ Student minimum (15%) enforced correctly', 'success');
+                } else {
+                    addResult('❌ Student minimum not enforced', 'error');
+                }
+                
+            } catch (error) {
+                addResult(`❌ Student test error: ${error.message}`, 'error');
+            }
+            
+            addResult('<h3>Professional Mode (30% minimum):</h3>');
+            try {
+                const proResult = window.EquityCalculatorNew.calculateAccurateEquity(
+                    testServices, 20, stage, commitment, 'PRO' // Try 20%, should be adjusted to 30%
+                );
+                
+                const actualPercent = ((proResult.cashPayable / proResult.adjustedValue) * 100).toFixed(1);
+                addResult(`Requested: 20% | Actual: ${actualPercent}% | Cash: ₹${proResult.cashPayable.toLocaleString()}`, 'info');
+                
+                if (actualPercent >= 30) {
+                    addResult('✅ Professional minimum (30%) enforced correctly', 'success');
+                } else {
+                    addResult('❌ Professional minimum not enforced', 'error');
+                }
+                
+            } catch (error) {
+                addResult(`❌ Professional test error: ${error.message}`, 'error');
+            }
+        }
+
+        // Auto-run test
+        window.addEventListener('load', function() {
+            setTimeout(testCashSliderEffect, 500);
+        });
+    </script>
+</body>
+</html>

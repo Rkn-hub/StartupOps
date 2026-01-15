@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html class="dark overflow-x-hidden" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>StartupOps Portfolio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Poppins:wght@700&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <!-- Standardized Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #64FFDA, #64FFDA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        .glassmorphism {
+            background: rgba(42, 42, 42, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+        }
+        
+        /* Original Portfolio Card Styles */
+        .font-poppins { font-family: 'Poppins', sans-serif; }
+        
+        /* 3D Card Styles */
+        .card-3d-parent {
+            width: 100%;
+            max-width: 320px;
+            height: 350px;
+            perspective: 1000px;
+            margin: 0 auto;
+        }
+        
+        .card-3d {
+            height: 100%;
+            border-radius: 25px;
+            background: linear-gradient(135deg, rgba(43, 140, 255, 0.8) 0%, rgba(0, 224, 255, 0.9) 100%);
+            transition: all 0.5s ease-in-out;
+            transform-style: preserve-3d;
+            box-shadow: rgba(5, 71, 17, 0) 40px 50px 25px -40px, rgba(43, 140, 255, 0.3) 0px 25px 25px -5px;
+        }
+        
+        .card-3d-glass {
+            transform-style: preserve-3d;
+            position: absolute;
+            inset: 8px;
+            border-radius: 30px;
+            border-top-right-radius: 50%;
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.3) 100%);
+            backdrop-filter: blur(5px);
+            transform: translate3d(0px, 0px, 25px);
+            border-left: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.5s ease-in-out;
+        }
+        
+        .card-3d-content {
+            padding: 80px 30px 0px 30px;
+            transform: translate3d(0, 0, 26px);
+        }
+        
+        .card-3d-content .card-3d-title {
+            display: block;
+            color: white;
+            font-weight: 900;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .card-3d-content .card-3d-text {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            margin-top: 15px;
+            line-height: 1.4;
+        }
+        
+        .card-3d-bottom {
+            padding: 10px 12px;
+            transform-style: preserve-3d;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transform: translate3d(0, 0, 26px);
+        }
+        
+        .card-3d-view-more {
+            display: flex;
+            align-items: center;
+            width: 40%;
+            justify-content: flex-end;
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .card-3d-view-more:hover {
+            transform: translate3d(0, 0, 10px);
+        }
+        
+        .card-3d-view-more-button {
+            background: none;
+            border: none;
+            color: white;
+            font-weight: bolder;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        
+        .card-3d-view-more .card-3d-svg {
+            fill: none;
+            stroke: white;
+            stroke-width: 3px;
+            max-height: 15px;
+            margin-left: 5px;
+        }
+        
+        .card-3d-social-buttons {
+            display: flex;
+            gap: 10px;
+            transform-style: preserve-3d;
+        }
+        
+        .card-3d-social-button {
+            width: 30px;
+            aspect-ratio: 1;
+            padding: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            border: none;
+            display: grid;
+            place-content: center;
+            box-shadow: rgba(43, 140, 255, 0.5) 0px 7px 5px -5px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .card-3d-social-button:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translate3d(0, 0, 10px);
+        }
+        
+        .card-3d-social-button .card-3d-svg {
+            width: 15px;
+            fill: white;
+        }
+        
+        .card-3d-logo {
+            position: absolute;
+            right: 0;
+            top: 0;
+            transform-style: preserve-3d;
+        }
+        
+        .card-3d-circle {
+            display: block;
+            position: absolute;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            top: 0;
+            right: 0;
+            box-shadow: rgba(100, 100, 111, 0.2) -10px 10px 20px 0px;
+            backdrop-filter: blur(5px);
+            background: rgba(0, 224, 255, 0.2);
+            transition: all 0.5s ease-in-out;
+        }
+        
+        .card-3d-circle1 {
+            width: 120px;
+            transform: translate3d(0, 0, 20px);
+            top: 8px;
+            right: 8px;
+        }
+        
+        .card-3d-circle2 {
+            width: 100px;
+            transform: translate3d(0, 0, 40px);
+            top: 10px;
+            right: 10px;
+            backdrop-filter: blur(1px);
+            transition-delay: 0.2s;
+        }
+        
+        .card-3d-circle3 {
+            width: 80px;
+            transform: translate3d(0, 0, 60px);
+            top: 17px;
+            right: 17px;
+            transition-delay: 0.4s;
+        }
+        
+        .card-3d-circle4 {
+            width: 60px;
+            transform: translate3d(0, 0, 80px);
+            top: 23px;
+            right: 23px;
+            transition-delay: 0.6s;
+        }
+        
+        .card-3d-circle5 {
+            width: 40px;
+            transform: translate3d(0, 0, 100px);
+            top: 30px;
+            right: 30px;
+            display: grid;
+            place-content: center;
+            transition-delay: 0.8s;
+        }
+        
+        .card-3d-circle5 .card-3d-svg {
+            width: 16px;
+            fill: white;
+        }
+        
+        .card-3d-parent:hover .card-3d {
+            transform: rotate3d(1, 1, 0, 20deg);
+            box-shadow: rgba(43, 140, 255, 0.4) 30px 50px 25px -40px, rgba(43, 140, 255, 0.2) 0px 25px 30px 0px;
+        }
+        
+        .card-3d-parent:hover .card-3d .card-3d-social-button {
+            transform: translate3d(0, 0, 30px);
+            box-shadow: rgba(43, 140, 255, 0.3) -5px 20px 10px 0px;
+        }
+        
+        .card-3d-parent:hover .card-3d .card-3d-circle2 {
+            transform: translate3d(0, 0, 60px);
+        }
+        
+        .card-3d-parent:hover .card-3d .card-3d-circle3 {
+            transform: translate3d(0, 0, 80px);
+        }
+        
+        .card-3d-parent:hover .card-3d .card-3d-circle4 {
+            transform: translate3d(0, 0, 100px);
+        }
+        
+        .card-3d-parent:hover .card-3d .card-3d-circle5 {
+            transform: translate3d(0, 0, 120px);
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0E1E3C",
+                        "accent": "#64FFDA",
+                        "secondary": "#F5F7FA",
+                        "highlight-cyan": "#64FFDA",
+                        "highlight-purple": "#64FFDA",
+                        "background-light": "#F5F7FA",
+                        "background-dark": "#212121",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Nunito Sans", "sans-serif"],
+                        "heading": ["Poppins", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem", 
+                        "lg": "1rem", 
+                        "xl": "1.25rem",
+                        "2xl": "20px",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'glow-blue': '0 0 15px 5px rgba(43, 140, 255, 0.3)',
+                        'glow-cyan': '0 0 20px 7px rgba(0, 224, 255, 0.25)',
+                        'glow-gradient': '0 0 25px 8px rgba(142, 45, 226, 0.2), 0 0 15px 5px rgba(0, 224, 255, 0.2)',
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-dark font-display text-text-primary overflow-x-hidden">
+    <!-- Hero Container with Background -->
+    <div class="relative w-full overflow-x-hidden">
+        <!-- Standardized Background Elements -->
+        <div class="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-b from-primary/30 to-transparent z-0"></div>
+        <div class="absolute top-[-200px] right-[-200px] w-[500px] h-[500px] bg-accent/10 rounded-full blur-3xl z-0"></div>
+        <div class="absolute top-[300px] left-[-250px] w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl z-0"></div>
+        
+        <!-- Content Container -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- STANDARDIZED NAVIGATION -->
+            <header class="flex items-center justify-between py-6">
+                <!-- Logo Section -->
+                <div class="flex items-center gap-4 text-white">
+                    <div class="size-6 text-accent">
+                        <svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-white text-xl font-bold font-heading">StartupOps</h2>
+                </div>
+                
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex items-center gap-8 text-sm">
+                    <a class="text-gray-300 hover:text-white transition-colors" href="index.html">Home</a>
+                    <a class="text-gray-300 hover:text-white transition-colors" href="services.html">Services</a>
+                    <a class="text-accent" href="portfolio.html">Portfolio</a>
+                    <a class="text-gray-300 hover:text-white transition-colors" href="about.html">About</a>
+                    <a class="text-gray-300 hover:text-white transition-colors" href="how-it-works.html">How It Works</a>
+                </nav>
+                
+                <!-- CTA Button -->
+                <button onclick="window.location.href='contact.html'" class="hidden md:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary/80 border border-accent/30 text-white text-sm font-semibold leading-normal hover:bg-primary transition-all hover:shadow-lg hover:shadow-accent/20">
+                    <span class="truncate">Get Started</span>
+                </button>
+            </header>
+
+            <!-- STANDARDIZED HERO CONTENT -->
+            <main class="py-20 sm:py-28 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <!-- Main Heading -->
+                    <h1 class="text-5xl md:text-7xl font-bold font-heading tracking-tighter text-white leading-tight">
+                        Our <span class="gradient-text">Success</span> Stories
+                    </h1>
+                    
+                    <!-- Subtitle -->
+                    <h2 class="mt-6 max-w-2xl mx-auto text-lg text-gray-400">
+                        Discover how we've helped founders transform ideas into thriving businesses across India.
+                    </h2>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="mt-10 flex flex-wrap gap-4 justify-center">
+                        <!-- Primary CTA -->
+                        <button onclick="window.location.href='contact.html'" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-accent text-black text-base font-bold leading-normal tracking-wide shadow-lg shadow-accent/20 transition-all hover:scale-105 hover:shadow-xl hover:shadow-accent/30">
+                            <span class="truncate">Start Your Project</span>
+                        </button>
+                        
+                        <!-- Secondary CTA -->
+                        <button onclick="window.location.href='services.html'" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-white/10 border border-white/20 text-white text-base font-bold leading-normal tracking-wide backdrop-blur-sm transition-all hover:bg-white/20 hover:border-white/30">
+                            <span class="truncate">View Services</span>
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Portfolio Content Section -->
+    <div class="relative w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                            <div class="flex flex-col gap-6">
+                                <h2 class="text-white text-4xl sm:text-5xl font-heading font-bold leading-tight tracking-[-0.033em]">Recent Collaborations</h2>
+                                <div class="flex flex-col gap-4">
+                                    <div class="group relative p-6 bg-white/5 rounded-2xl border border-white/10 shadow-lg backdrop-blur-md overflow-hidden transition-all duration-300 hover:shadow-glow-gradient">
+                                        <div class="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-highlight-cyan to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                        <h3 class="font-heading font-bold text-lg text-white">Purrfect Care</h3>
+                                        <p class="text-secondary/70">Brand identity & website for a pet care startup.</p>
+                                    </div>
+                                    <div class="group relative p-6 bg-white/5 rounded-2xl border border-white/10 shadow-lg backdrop-blur-md overflow-hidden transition-all duration-300 hover:shadow-glow-gradient">
+                                        <div class="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-highlight-cyan to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                        <h3 class="font-heading font-bold text-lg text-white">RR Purification</h3>
+                                        <p class="text-secondary/70">Digital rebranding & marketing setup for MSME.</p>
+                                    </div>
+                                    <div class="group relative p-6 bg-white/5 rounded-2xl border border-white/10 shadow-lg backdrop-blur-md overflow-hidden transition-all duration-300 hover:shadow-glow-gradient">
+                                        <div class="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-highlight-purple to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                        <h3 class="font-heading font-bold text-lg text-white">Extoll.Co</h3>
+                                        <p class="text-secondary/70">MVP app design and launch campaign.</p>
+                                    </div>
+                                    <div class="group relative p-6 bg-white/5 rounded-2xl border border-white/10 shadow-lg backdrop-blur-md overflow-hidden transition-all duration-300 hover:shadow-glow-gradient">
+                                        <div class="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-highlight-purple to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                        <h3 class="font-heading font-bold text-lg text-white">Food Processor</h3>
+                                        <p class="text-secondary/70">Logo, packaging, and digital onboarding.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="relative p-8 bg-white/5 rounded-2xl border border-white/10 shadow-xl backdrop-blur-lg flex flex-col gap-6">
+                                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-1 bg-gradient-to-r from-highlight-cyan via-highlight-purple to-highlight-cyan blur-xl"></div>
+                                <div class="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none"></div>
+                                <h3 class="text-2xl font-heading font-bold text-center text-white">Results at a Glance</h3>
+                                <div class="flex flex-col gap-4 text-lg">
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-green-400">✅</span>
+                                        <p>4 startups launched within 3 months</p>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-green-400">✅</span>
+                                        <p>2 funded through college incubators</p>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-green-400">✅</span>
+                                        <p>100% client satisfaction and retention</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Featured 3D Portfolio Cards -->
+                        <section class="py-16">
+                            <div class="text-center mb-12">
+                                <h2 class="text-4xl font-bold font-heading text-white">Featured Success Stories</h2>
+                                <p class="mt-4 max-w-2xl mx-auto text-secondary/80">Interactive showcase of our most impactful projects</p>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                                <!-- 3D Card 1 -->
+                                <div class="card-3d-parent">
+                                    <div class="card-3d">
+                                        <div class="card-3d-glass"></div>
+                                        <div class="card-3d-content">
+                                            <span class="card-3d-title">Purrfect Care</span>
+                                            <span class="card-3d-text">Complete pet care platform connecting owners with veterinarians across 3 cities</span>
+                                        </div>
+                                        <div class="card-3d-bottom">
+                                            <div class="card-3d-social-buttons">
+                                                <button class="card-3d-social-button">
+                                                    <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                                    </svg>
+                                                </button>
+                                                <button class="card-3d-social-button">
+                                                    <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                                                    </svg>
+                                                </button>
+                                                <button class="card-3d-social-button">
+                                                    <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            <div class="card-3d-view-more">
+                                                <button class="card-3d-view-more-button">View Case Study</button>
+                                                <svg class="card-3d-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="m6 9 6 6 6-6"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="card-3d-logo">
+                                            <span class="card-3d-circle card-3d-circle1"></span>
+                                            <span class="card-3d-circle card-3d-circle2"></span>
+                                            <span class="card-3d-circle card-3d-circle3"></span>
+                                            <span class="card-3d-circle card-3d-circle4"></span>
+                                            <span class="card-3d-circle card-3d-circle5">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="card-3d-svg">
+                                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 3D Card 2 -->
+                                <div class="card-3d-parent">
+                                    <div class="card-3d" style="background: linear-gradient(135deg, rgba(142, 45, 226, 0.8) 0%, rgba(43, 140, 255, 0.9) 100%);">
+                                        <div class="card-3d-glass"></div>
+                                        <div class="card-3d-content">
+                                            <span class="card-3d-title">RR Purification</span>
+                                            <span class="card-3d-text">Digital transformation of traditional water treatment business with 250% sales growth</span>
+                                        </div>
+                                        <div class="card-3d-bottom">
+                                            <div class="card-3d-social-buttons">
+                                                <button class="card-3d-social-button">
+                                                    <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                        <path d="M3 3h18v18H3zM9 17V7l8 5-8 5z"/>
+                                                    </svg>
+                                                </button>
+                                                <button class="card-3d-social-button">
+                                                    <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                                        <line x1="8" y1="21" x2="16" y2="21"/>
+                                                        <line x1="12" y1="17" x2="12" y2="21"/>
+                                                    </svg>
+                                                </button>
+                                                <button class="card-3d-social-button">
+                                                    <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                                        <rect x="2" y="9" width="4" height="12"/>
+                                                        <circle cx="4" cy="4" r="2"/>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            <div class="card-3d-view-more">
+                                                <button class="card-3d-view-more-button">View Case Study</button>
+                                                <svg class="card-3d-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="m6 9 6 6 6-6"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="card-3d-logo">
+                                            <span class="card-3d-circle card-3d-circle1"></span>
+                                            <span class="card-3d-circle card-3d-circle2"></span>
+                                            <span class="card-3d-circle card-3d-circle3"></span>
+                                            <span class="card-3d-circle card-3d-circle4"></span>
+                                            <span class="card-3d-circle card-3d-circle5">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="card-3d-svg">
+                                                    <path d="M3 3h18v18H3zM9 17V7l8 5-8 5z"/>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 3D Card 3 -->
+                                <div class="card-3d-parent">
+                                    <div class="card-3d" style="background: linear-gradient(135deg, rgba(0, 224, 255, 0.8) 0%, rgba(142, 45, 226, 0.9) 100%);">
+                                        <div class="card-3d-glass"></div>
+                                        <div class="card-3d-content">
+                                            <span class="card-3d-title">Extoll.Co</span>
+                                            <span class="card-3d-text">EdTech MVP with 1000+ users in first month and ₹50L seed funding secured</span>
+                                        </div>
+                                        <div class="card-3d-bottom">
+                                            <div class="card-3d-social-buttons">
+                                                <button class="card-3d-social-button">
+                                                    <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                                    </svg>
+                                                </button>
+                                                <button class="card-3d-social-button">
+                                                    <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                                        <circle cx="9" cy="9" r="2"/>
+                                                        <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+                                                    </svg>
+                                                </button>
+                                                <button class="card-3d-social-button">
+                                                    <svg viewBox="0 0 24 24" class="card-3d-svg">
+                                                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            <div class="card-3d-view-more">
+                                                <button class="card-3d-view-more-button">View Case Study</button>
+                                                <svg class="card-3d-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="m6 9 6 6 6-6"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="card-3d-logo">
+                                            <span class="card-3d-circle card-3d-circle1"></span>
+                                            <span class="card-3d-circle card-3d-circle2"></span>
+                                            <span class="card-3d-circle card-3d-circle3"></span>
+                                            <span class="card-3d-circle card-3d-circle4"></span>
+                                            <span class="card-3d-circle card-3d-circle5">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="card-3d-svg">
+                                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Detailed Portfolio Section -->
+                        <section class="py-16">
+                            <div class="text-center mb-12">
+                                <h2 class="text-4xl font-bold font-heading text-white">Our Success Stories</h2>
+                                <p class="mt-4 max-w-2xl mx-auto text-secondary/80">From idea to execution, see how we've helped founders build and scale their ventures.</p>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                <!-- Portfolio Item 1 -->
+                                <div class="group relative bg-white/5 rounded-2xl border border-white/10 shadow-lg backdrop-blur-md overflow-hidden transition-all duration-300 hover:shadow-glow-gradient">
+                                    <div class="p-6">
+                                        <div class="flex items-center gap-3 mb-4">
+                                            <div class="w-12 h-12 bg-gradient-to-r from-accent to-highlight-cyan rounded-lg flex items-center justify-center">
+                                                <span class="material-symbols-outlined text-white">pets</span>
+                                            </div>
+                                            <div>
+                                                <h3 class="font-heading font-bold text-lg text-white">Purrfect Care</h3>
+                                                <p class="text-sm text-accent">Pet Care Platform</p>
+                                            </div>
+                                        </div>
+                                        <p class="text-secondary/70 mb-4">Complete brand identity and responsive website for a pet care startup connecting pet owners with veterinarians.</p>
+                                        <div class="flex flex-wrap gap-2 mb-4">
+                                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">Branding</span>
+                                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">Web Design</span>
+                                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">Marketing</span>
+                                        </div>
+                                        <div class="text-sm text-secondary/60">
+                                            <p>• 300% increase in user engagement</p>
+                                            <p>• Launched in 3 cities within 6 months</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Portfolio Item 2 -->
+                                <div class="group relative bg-white/5 rounded-2xl border border-white/10 shadow-lg backdrop-blur-md overflow-hidden transition-all duration-300 hover:shadow-glow-gradient">
+                                    <div class="p-6">
+                                        <div class="flex items-center gap-3 mb-4">
+                                            <div class="w-12 h-12 bg-gradient-to-r from-highlight-purple to-accent rounded-lg flex items-center justify-center">
+                                                <span class="material-symbols-outlined text-white">water_drop</span>
+                                            </div>
+                                            <div>
+                                                <h3 class="font-heading font-bold text-lg text-white">RR Purification</h3>
+                                                <p class="text-sm text-accent">Water Treatment MSME</p>
+                                            </div>
+                                        </div>
+                                        <p class="text-secondary/70 mb-4">Digital transformation and rebranding for a traditional water purification business, including e-commerce setup.</p>
+                                        <div class="flex flex-wrap gap-2 mb-4">
+                                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">Rebranding</span>
+                                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">E-commerce</span>
+                                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">Digital Marketing</span>
+                                        </div>
+                                        <div class="text-sm text-secondary/60">
+                                            <p>• 250% increase in online sales</p>
+                                            <p>• Expanded to 5 new markets</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Portfolio Item 3 -->
+                                <div class="group relative bg-white/5 rounded-2xl border border-white/10 shadow-lg backdrop-blur-md overflow-hidden transition-all duration-300 hover:shadow-glow-gradient">
+                                    <div class="p-6">
+                                        <div class="flex items-center gap-3 mb-4">
+                                            <div class="w-12 h-12 bg-gradient-to-r from-highlight-cyan to-highlight-purple rounded-lg flex items-center justify-center">
+                                                <span class="material-symbols-outlined text-white">rocket_launch</span>
+                                            </div>
+                                            <div>
+                                                <h3 class="font-heading font-bold text-lg text-white">Extoll.Co</h3>
+                                                <p class="text-sm text-accent">EdTech Startup</p>
+                                            </div>
+                                        </div>
+                                        <p class="text-secondary/70 mb-4">MVP development and launch campaign for an innovative learning platform targeting college students.</p>
+                                        <div class="flex flex-wrap gap-2 mb-4">
+                                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">MVP Development</span>
+                                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">App Design</span>
+                                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">Launch Strategy</span>
+                                        </div>
+                                        <div class="text-sm text-secondary/60">
+                                            <p>• 1000+ users in first month</p>
+                                            <p>• Secured seed funding of ₹50L</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Portfolio Item 4 -->
+                                <div class="group relative bg-white/5 rounded-2xl border border-white/10 shadow-lg backdrop-blur-md overflow-hidden transition-all duration-300 hover:shadow-glow-gradient">
+                                    <div class="p-6">
+                                        <div class="flex items-center gap-3 mb-4">
+                                            <div class="w-12 h-12 bg-gradient-to-r from-accent to-highlight-purple rounded-lg flex items-center justify-center">
+                                                <span class="material-symbols-outlined text-white">restaurant</span>
+                                            </div>
+                                            <div>
+                                                <h3 class="font-heading font-bold text-lg text-white">Food Processor Co.</h3>
+                                                <p class="text-sm text-accent">Food & Beverage</p>
+                                            </div>
+                                        </div>
+                                        <p class="text-secondary/70 mb-4">Complete brand identity, packaging design, and digital presence for a food processing startup.</p>
+                                        <div class="flex flex-wrap gap-2 mb-4">
+                                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">Logo Design</span>
+                                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">Packaging</span>
+                                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">Digital Setup</span>
+                                        </div>
+                                        <div class="text-sm text-secondary/60">
+                                            <p>• Launched in 50+ retail stores</p>
+                                            <p>• 400% growth in brand recognition</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Portfolio Item 5 -->
+                                <div class="group relative bg-white/5 rounded-2xl border border-white/10 shadow-lg backdrop-blur-md overflow-hidden transition-all duration-300 hover:shadow-glow-gradient">
+                                    <div class="p-6">
+                                        <div class="flex items-center gap-3 mb-4">
+                                            <div class="w-12 h-12 bg-gradient-to-r from-highlight-cyan to-accent rounded-lg flex items-center justify-center">
+                                                <span class="material-symbols-outlined text-white">health_and_safety</span>
+                                            </div>
+                                            <div>
+                                                <h3 class="font-heading font-bold text-lg text-white">HealthTech Startup</h3>
+                                                <p class="text-sm text-accent">Healthcare Platform</p>
+                                            </div>
+                                        </div>
+                                        <p class="text-secondary/70 mb-4">End-to-end development of a telemedicine platform with integrated appointment booking and consultation features.</p>
+                                        <div class="flex flex-wrap gap-2 mb-4">
+                                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">Full Stack Dev</span>
+                                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">UI/UX Design</span>
+                                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">Compliance</span>
+                                        </div>
+                                        <div class="text-sm text-secondary/60">
+                                            <p>• 500+ doctors onboarded</p>
+                                            <p>• 10,000+ consultations completed</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Portfolio Item 6 -->
+                                <div class="group relative bg-white/5 rounded-2xl border border-white/10 shadow-lg backdrop-blur-md overflow-hidden transition-all duration-300 hover:shadow-glow-gradient">
+                                    <div class="p-6">
+                                        <div class="flex items-center gap-3 mb-4">
+                                            <div class="w-12 h-12 bg-gradient-to-r from-highlight-purple to-highlight-cyan rounded-lg flex items-center justify-center">
+                                                <span class="material-symbols-outlined text-white">shopping_cart</span>
+                                            </div>
+                                            <div>
+                                                <h3 class="font-heading font-bold text-lg text-white">Local Commerce</h3>
+                                                <p class="text-sm text-accent">E-commerce Platform</p>
+                                            </div>
+                                        </div>
+                                        <p class="text-secondary/70 mb-4">Hyperlocal e-commerce platform connecting local businesses with customers, including delivery integration.</p>
+                                        <div class="flex flex-wrap gap-2 mb-4">
+                                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">Platform Dev</span>
+                                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">Mobile App</span>
+                                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">Logistics</span>
+                                        </div>
+                                        <div class="text-sm text-secondary/60">
+                                            <p>• 200+ local businesses onboarded</p>
+                                            <p>• ₹2Cr+ GMV in first year</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </main>
+
+                    <footer class="flex flex-col gap-8 px-5 py-16 text-center border-t border-solid border-white/10 mt-10">
+                        <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+                            <a class="text-secondary/70 hover:text-white transition-colors text-base font-normal leading-normal" href="#">Privacy Policy</a>
+                            <a class="text-secondary/70 hover:text-white transition-colors text-base font-normal leading-normal" href="#">Terms of Service</a>
+                            <a class="text-secondary/70 hover:text-white transition-colors text-base font-normal leading-normal" href="#">Careers</a>
+                        </div>
+                        <div class="flex flex-wrap justify-center gap-6">
+                            <a class="text-secondary/70 hover:text-white transition-colors" href="#">
+                                <svg fill="currentColor" height="24" viewBox="0 0 16 16" width="24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.602.75Zm-2.6 13.01h1.447L4.87 2.148H3.28e-05l8.72 11.603Z"></path>
+                                </svg>
+                            </a>
+                            <a class="text-secondary/70 hover:text-white transition-colors" href="#">
+                                <svg fill="currentColor" height="24" viewBox="0 0 16 16" width="24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"></path>
+                                </svg>
+                            </a>
+                            <a class="text-secondary/70 hover:text-white transition-colors" href="#">
+                                <svg fill="currentColor" height="24" viewBox="0 0 16 16" width="24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        <p class="text-secondary/60 text-sm font-normal leading-normal">© 2024 StartupOps. All rights reserved.</p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StartupOps - Let's Build Together</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Poppins:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "deep-navy": "#0E1E3C",
+            "electric-blue": "#2B8CFF",
+            "soft-gray": "#F5F7FA",
+            "neon-cyan": "#00E0FF",
+            "gradient-purple": "#8E2DE2",
+          },
+          fontFamily: {
+            "body": ["Nunito Sans", "sans-serif"],
+            "heading": ["Poppins", "sans-serif"],
+          },
+          borderRadius: {
+            "20px": "20px",
+          },
+          boxShadow: {
+            'glow-cyan': '0 0 15px 0 rgba(0, 224, 255, 0.3)',
+            'glow-blue': '0 0 20px 0 rgba(43, 140, 255, 0.4)',
+            'glow-purple': '0 0 15px 0 rgba(142, 45, 226, 0.3)',
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .glassmorphism {
+      background: rgba(245, 247, 250, 0.05);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(245, 247, 250, 0.1);
+    }
+    .form-input:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #2B8CFF;
+      border-color: #2B8CFF;
+    }
+    .neon-line {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      border: 1px solid transparent;
+      background: linear-gradient(135deg, #00E0FF, #8E2DE2) border-box;
+      -webkit-mask:
+         linear-gradient(#fff 0 0) padding-box,
+         linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      z-index: -1;
+      opacity: 0.3;
+    }
+  </style>
+</head>
+<body class="bg-deep-navy font-body text-soft-gray">
+<div class="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden p-4 sm:p-6 md:p-8">
+<div class="absolute -top-40 -left-40 h-[400px] w-[400px] rounded-full bg-gradient-to-br from-neon-cyan/20 to-gradient-purple/20 blur-3xl opacity-30"></div>
+<div class="absolute -bottom-40 -right-40 h-[400px] w-[400px] rounded-full bg-gradient-to-tl from-electric-blue/20 to-deep-navy blur-3xl opacity-40"></div>
+<main class="z-10 flex w-full max-w-5xl flex-1 flex-col items-center justify-center px-4 py-16">
+<div class="grid w-full grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+<div class="flex flex-col justify-center text-center lg:text-left">
+<h1 class="font-heading text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl">Let’s Build Together.</h1>
+<p class="mt-4 max-w-md text-lg text-soft-gray/80 lg:max-w-none">Whether you’re a student founder, early-stage entrepreneur, or small business — we’re here to make your ideas real.</p>
+<div class="relative mt-8 w-full">
+<div class="glassmorphism relative rounded-20px p-8 shadow-2xl">
+<div class="neon-line"></div>
+<form class="flex flex-col gap-5">
+<div class="flex flex-col text-left">
+<label class="mb-2 text-sm font-semibold text-soft-gray/90" for="name">Name</label>
+<input class="form-input h-12 w-full rounded-[10px] border border-white/10 bg-white/5 p-3 text-base text-white placeholder:text-white/40 transition-all duration-300" id="name" placeholder="Your Name" type="text"/>
+</div>
+<div class="flex flex-col text-left">
+<label class="mb-2 text-sm font-semibold text-soft-gray/90" for="contact">Email / WhatsApp</label>
+<input class="form-input h-12 w-full rounded-[10px] border border-white/10 bg-white/5 p-3 text-base text-white placeholder:text-white/40 transition-all duration-300" id="contact" placeholder="your@email.com or +91..." type="text"/>
+</div>
+<div class="flex flex-col text-left">
+<label class="mb-2 text-sm font-semibold text-soft-gray/90" for="stage">Startup Stage</label>
+<select class="form-input h-12 w-full appearance-none rounded-[10px] border border-white/10 bg-white/5 p-3 text-base text-white/80 transition-all duration-300" id="stage">
+<option class="bg-deep-navy" value="idea">Idea</option>
+<option class="bg-deep-navy" value="mvp">MVP</option>
+<option class="bg-deep-navy" value="growth">Growth</option>
+</select>
+</div>
+<div class="flex flex-col text-left">
+<label class="mb-2 text-sm font-semibold text-soft-gray/90" for="services">Services Needed</label>
+<textarea class="form-input w-full resize-y rounded-[10px] border border-white/10 bg-white/5 p-3 text-base text-white placeholder:text-white/40 transition-all duration-300" id="services" placeholder="e.g., MVP Development, Branding, Pitch Deck..." rows="3"></textarea>
+</div>
+</form>
+</div>
+</div>
+<div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
+<a class="flex h-12 w-full items-center justify-center rounded-[12px] bg-electric-blue px-6 text-base font-bold text-white shadow-lg shadow-electric-blue/30 transition-all duration-300 hover:scale-105 hover:shadow-glow-blue sm:w-auto" href="#">👉 Get Free Consultation</a>
+<a class="flex h-12 w-full items-center justify-center rounded-[12px] border border-white/20 bg-white/10 px-6 text-base font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-white/20 hover:shadow-glow-purple sm:w-auto" href="#">👉 Partner With Us</a>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center text-center lg:items-start lg:text-left">
+<div class="flex flex-col gap-6">
+<a class="group flex items-center gap-3 transition-colors hover:text-white" href="#">
+<span class="text-2xl">📍</span>
+<div>
+<p class="font-bold text-soft-gray">LinkedIn</p>
+<p class="text-sm text-soft-gray/60 group-hover:text-electric-blue">@StartupOpsIndia</p>
+</div>
+</a>
+<a class="group flex items-center gap-3 transition-colors hover:text-white" href="#">
+<span class="text-2xl">📷</span>
+<div>
+<p class="font-bold text-soft-gray">Instagram</p>
+<p class="text-sm text-soft-gray/60 group-hover:text-electric-blue">@startupops.studio</p>
+</div>
+</a>
+<a class="group flex items-center gap-3 transition-colors hover:text-white" href="#">
+<span class="text-2xl">✉️</span>
+<div>
+<p class="font-bold text-soft-gray">Email</p>
+<p class="text-sm text-soft-gray/60 group-hover:text-electric-blue">hello@startupops.in</p>
+</div>
+</a>
+</div>
+<p class="mt-12 w-full border-t border-white/10 pt-8 font-heading text-xl font-bold italic text-white">“Execution meets alignment — we build startups that build India.”</p>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

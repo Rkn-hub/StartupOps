@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StartupOps - Services to Build Your Vision</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --radius: 20px;
+            }
+        }
+        .glass-card {
+            background-color: rgba(245, 247, 250, 0.05);backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(245, 247, 250, 0.1);border-radius: var(--radius);
+        }
+        .glass-card:hover {
+            box-shadow: 0 0 20px rgba(0, 224, 255, 0.2), 0 0 30px rgba(43, 140, 255, 0.1);border-color: rgba(43, 140, 255, 0.5);}
+        .neon-accent {
+            background-image: linear-gradient(to right, #00E0FF, #8E2DE2);
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#0E1E3C",
+              "accent": "#2B8CFF",
+              "secondary": "#F5F7FA",
+              "highlight-start": "#00E0FF",
+              "highlight-end": "#8E2DE2",
+              "background-light": "#F5F7FA","background-dark": "#0E1E3C",},
+            fontFamily: {
+              "display": ["Inter", "sans-serif"],
+              "heading": ["Poppins", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.5rem",
+              "lg": "1rem",
+              "xl": "20px","full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background-dark font-display text-secondary">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 sm:px-10 md:px-20 lg:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[1200px] flex-1">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 px-6 sm:px-10 py-4">
+<div class="flex items-center gap-4 text-white">
+<div class="size-6 text-accent">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-white text-xl font-bold font-heading leading-tight tracking-[-0.015em]">StartupOps</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8">
+<nav class="flex items-center gap-9">
+<a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Services</a>
+<a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="#">About</a>
+<a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Portfolio</a>
+<a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Contact</a>
+</nav>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-accent hover:bg-accent/90 text-white text-sm font-bold leading-normal tracking-[0.015em] transition-colors">
+<span class="truncate">Get Started</span>
+</button>
+</div>
+</header>
+<main class="flex flex-col gap-12 md:gap-16 pt-16 md:pt-24 pb-16 md:pb-24">
+<div class="px-4 sm:px-10 text-center flex flex-col items-center gap-6">
+<div class="flex flex-col gap-3">
+<h1 class="text-white text-4xl sm:text-5xl md:text-6xl font-bold font-heading leading-tight tracking-tighter">
+                                    Services to Build Your Vision
+                                </h1>
+<p class="text-white/70 text-base sm:text-lg font-normal leading-normal max-w-2xl mx-auto">
+                                    Empowering India's next-generation founders with comprehensive operational support, from strategy to scale.
+                                </p>
+</div>
+</div>
+<div class="flex flex-col gap-10">
+<section class="flex flex-col gap-6 px-4">
+<h2 class="text-white text-2xl md:text-3xl font-bold font-heading leading-tight tracking-[-0.015em]">Strategy &amp; Branding</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="group relative glass-card p-6 flex flex-col gap-4 text-center items-center justify-center aspect-[4/3] transition-all duration-300 ease-in-out">
+<span class="material-symbols-outlined text-4xl text-accent">lightbulb</span>
+<h3 class="text-lg font-bold text-white">Idea Validation &amp; Business Model</h3>
+<div class="absolute inset-0 bg-primary/80 flex flex-col items-center justify-center gap-4 p-6 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<p class="text-sm text-white/80">In-depth analysis and framework design to ensure product-market fit.</p>
+<button class="mt-2 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-accent text-white text-sm font-bold leading-normal tracking-[0.015em]"><span class="truncate">Request Quote</span></button>
+</div>
+</div>
+<div class="group relative glass-card p-6 flex flex-col gap-4 text-center items-center justify-center aspect-[4/3] transition-all duration-300 ease-in-out">
+<span class="material-symbols-outlined text-4xl text-accent">palette</span>
+<h3 class="text-lg font-bold text-white">Brand Identity &amp; Guidelines</h3>
+<div class="absolute inset-0 bg-primary/80 flex flex-col items-center justify-center gap-4 p-6 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<p class="text-sm text-white/80">Crafting a unique logo, visual system, and brand that resonates.</p>
+<button class="mt-2 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-accent text-white text-sm font-bold leading-normal tracking-[0.015em]"><span class="truncate">Request Quote</span></button>
+</div>
+</div>
+<div class="group relative glass-card p-6 flex flex-col gap-4 text-center items-center justify-center aspect-[4/3] transition-all duration-300 ease-in-out">
+<span class="material-symbols-outlined text-4xl text-accent">slideshow</span>
+<h3 class="text-lg font-bold text-white">Pitch Deck &amp; Storytelling</h3>
+<div class="absolute inset-0 bg-primary/80 flex flex-col items-center justify-center gap-4 p-6 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<p class="text-sm text-white/80">Compelling presentations that captivate investors and secure funding.</p>
+<button class="mt-2 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-accent text-white text-sm font-bold leading-normal tracking-[0.015em]"><span class="truncate">Request Quote</span></button>
+</div>
+</div>
+</div>
+</section>
+<section class="flex flex-col gap-6 px-4">
+<h2 class="text-white text-2xl md:text-3xl font-bold font-heading leading-tight tracking-[-0.015em]">Technology Development</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="group relative glass-card p-6 flex flex-col gap-4 text-center items-center justify-center aspect-[4/3] transition-all duration-300 ease-in-out">
+<span class="material-symbols-outlined text-4xl text-accent">rocket_launch</span>
+<h3 class="text-lg font-bold text-white">MVP and Web/App Development</h3>
+<div class="absolute inset-0 bg-primary/80 flex flex-col items-center justify-center gap-4 p-6 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<p class="text-sm text-white/80">Rapidly build and test your core product with real users on any platform.</p>
+<button class="mt-2 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-accent text-white text-sm font-bold leading-normal tracking-[0.015em]"><span class="truncate">Request Quote</span></button>
+</div>
+</div>
+<div class="group relative glass-card p-6 flex flex-col gap-4 text-center items-center justify-center aspect-[4/3] transition-all duration-300 ease-in-out">
+<span class="material-symbols-outlined text-4xl text-accent">dashboard</span>
+<h3 class="text-lg font-bold text-white">Landing Pages &amp; Dashboards</h3>
+<div class="absolute inset-0 bg-primary/80 flex flex-col items-center justify-center gap-4 p-6 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<p class="text-sm text-white/80">Creating high-converting pages or custom e-commerce setups.</p>
+<button class="mt-2 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-accent text-white text-sm font-bold leading-normal tracking-[0.015em]"><span class="truncate">Request Quote</span></button>
+</div>
+</div>
+<div class="group relative glass-card p-6 flex flex-col gap-4 text-center items-center justify-center aspect-[4/3] transition-all duration-300 ease-in-out">
+<span class="material-symbols-outlined text-4xl text-accent">bolt</span>
+<h3 class="text-lg font-bold text-white">No-Code/Low-Code Builds</h3>
+<div class="absolute inset-0 bg-primary/80 flex flex-col items-center justify-center gap-4 p-6 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<p class="text-sm text-white/80">Accelerate your launch with efficient and scalable low-code solutions.</p>
+<button class="mt-2 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-accent text-white text-sm font-bold leading-normal tracking-[0.015em]"><span class="truncate">Request Quote</span></button>
+</div>
+</div>
+</div>
+</section>
+<section class="flex flex-col gap-6 px-4">
+<h2 class="text-white text-2xl md:text-3xl font-bold font-heading leading-tight tracking-[-0.015em]">Legal &amp; Compliance</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="group relative glass-card p-6 flex flex-col gap-4 text-center items-center justify-center aspect-[4/3] transition-all duration-300 ease-in-out">
+<span class="material-symbols-outlined text-4xl text-accent">corporate_fare</span>
+<h3 class="text-lg font-bold text-white">Incorporation Support</h3>
+<div class="absolute inset-0 bg-primary/80 flex flex-col items-center justify-center gap-4 p-6 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<p class="text-sm text-white/80">Navigate the complexities of registering your business entity.</p>
+<button class="mt-2 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-accent text-white text-sm font-bold leading-normal tracking-[0.015em]"><span class="truncate">Request Quote</span></button>
+</div>
+</div>
+<div class="group relative glass-card p-6 flex flex-col gap-4 text-center items-center justify-center aspect-[4/3] transition-all duration-300 ease-in-out">
+<span class="material-symbols-outlined text-4xl text-accent">handshake</span>
+<h3 class="text-lg font-bold text-white">Founder &amp; Investor Agreements</h3>
+<div class="absolute inset-0 bg-primary/80 flex flex-col items-center justify-center gap-4 p-6 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<p class="text-sm text-white/80">Establish clear terms and equity splits for a strong foundation.</p>
+<button class="mt-2 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-accent text-white text-sm font-bold leading-normal tracking-[0.015em]"><span class="truncate">Request Quote</span></button>
+</div>
+</div>
+<div class="group relative glass-card p-6 flex flex-col gap-4 text-center items-center justify-center aspect-[4/3] transition-all duration-300 ease-in-out">
+<span class="material-symbols-outlined text-4xl text-accent">gavel</span>
+<h3 class="text-lg font-bold text-white">Legal Docs &amp; SAFE/SHA Drafts</h3>
+<div class="absolute inset-0 bg-primary/80 flex flex-col items-center justify-center gap-4 p-6 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<p class="text-sm text-white/80">Expertly drafted documents to protect your venture and its stakeholders.</p>
+<button class="mt-2 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-accent text-white text-sm font-bold leading-normal tracking-[0.015em]"><span class="truncate">Request Quote</span></button>
+</div>
+</div>
+</div>
+</section>
+<section class="flex flex-col gap-6 px-4">
+<h2 class="text-white text-2xl md:text-3xl font-bold font-heading leading-tight tracking-[-0.015em]">Marketing &amp; Growth</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="group relative glass-card p-6 flex flex-col gap-4 text-center items-center justify-center aspect-[4/3] transition-all duration-300 ease-in-out">
+<span class="material-symbols-outlined text-4xl text-accent">campaign</span>
+<h3 class="text-lg font-bold text-white">Social Media Strategy</h3>
+<div class="absolute inset-0 bg-primary/80 flex flex-col items-center justify-center gap-4 p-6 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<p class="text-sm text-white/80">Targeted campaigns to build brand awareness and drive engagement.</p>
+<button class="mt-2 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-accent text-white text-sm font-bold leading-normal tracking-[0.015em]"><span class="truncate">Request Quote</span></button>
+</div>
+</div>
+<div class="group relative glass-card p-6 flex flex-col gap-4 text-center items-center justify-center aspect-[4/3] transition-all duration-300 ease-in-out">
+<span class="material-symbols-outlined text-4xl text-accent">query_stats</span>
+<h3 class="text-lg font-bold text-white">SEO &amp; Digital Ads</h3>
+<div class="absolute inset-0 bg-primary/80 flex flex-col items-center justify-center gap-4 p-6 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<p class="text-sm text-white/80">Optimize your online presence and run effective ad campaigns for growth.</p>
+<button class="mt-2 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-accent text-white text-sm font-bold leading-normal tracking-[0.015em]"><span class="truncate">Request Quote</span></button>
+</div>
+</div>
+<div class="group relative glass-card p-6 flex flex-col gap-4 text-center items-center justify-center aspect-[4/3] transition-all duration-300 ease-in-out">
+<span class="material-symbols-outlined text-4xl text-accent">groups</span>
+<h3 class="text-lg font-bold text-white">Community &amp; Influencer Marketing</h3>
+<div class="absolute inset-0 bg-primary/80 flex flex-col items-center justify-center gap-4 p-6 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<p class="text-sm text-white/80">Build a loyal community and leverage influencers to amplify your reach.</p>
+<button class="mt-2 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-accent text-white text-sm font-bold leading-normal tracking-[0.015em]"><span class="truncate">Request Quote</span></button>
+</div>
+</div>
+</div>
+</section>
+<section class="flex flex-col gap-6 px-4">
+<h2 class="text-white text-2xl md:text-3xl font-bold font-heading leading-tight tracking-[-0.015em]">Mentorship &amp; Advisory</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="group relative glass-card p-6 flex flex-col gap-4 text-center items-center justify-center aspect-[4/3] transition-all duration-300 ease-in-out">
+<span class="material-symbols-outlined text-4xl text-accent">support_agent</span>
+<h3 class="text-lg font-bold text-white">1:1 Startup Guidance</h3>
+<div class="absolute inset-0 bg-primary/80 flex flex-col items-center justify-center gap-4 p-6 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<p class="text-sm text-white/80">Personalized mentorship from experienced founders and operators.</p>
+<button class="mt-2 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-accent text-white text-sm font-bold leading-normal tracking-[0.015em]"><span class="truncate">Request Quote</span></button>
+</div>
+</div>
+<div class="group relative glass-card p-6 flex flex-col gap-4 text-center items-center justify-center aspect-[4/3] transition-all duration-300 ease-in-out">
+<span class="material-symbols-outlined text-4xl text-accent">monitoring</span>
+<h3 class="text-lg font-bold text-white">Growth Audits</h3>
+<div class="absolute inset-0 bg-primary/80 flex flex-col items-center justify-center gap-4 p-6 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<p class="text-sm text-white/80">Comprehensive analysis to identify key growth levers and opportunities.</p>
+<button class="mt-2 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-accent text-white text-sm font-bold leading-normal tracking-[0.015em]"><span class="truncate">Request Quote</span></button>
+</div>
+</div>
+<div class="group relative glass-card p-6 flex flex-col gap-4 text-center items-center justify-center aspect-[4/3] transition-all duration-300 ease-in-out">
+<span class="material-symbols-outlined text-4xl text-accent">finance_chip</span>
+<h3 class="text-lg font-bold text-white">Fundraising Preparation</h3>
+<div class="absolute inset-0 bg-primary/80 flex flex-col items-center justify-center gap-4 p-6 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<p class="text-sm text-white/80">Get investor-ready with expert guidance on your strategy and pitch.</p>
+<button class="mt-2 flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-accent text-white text-sm font-bold leading-normal tracking-[0.015em]"><span class="truncate">Request Quote</span></button>
+</div>
+</div>
+</div>
+</section>
+<section class="px-4 mt-8">
+<div class="relative glass-card p-8 rounded-xl overflow-hidden">
+<div class="absolute top-0 left-0 h-1.5 w-full neon-accent"></div>
+<div class="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+<div class="flex-1">
+<p class="text-lg text-white font-medium leading-relaxed">💡 All services available <span class="font-bold">à la carte or in affordable bundles</span>.</p>
+<p class="text-white/70 mt-1">Equity range: 3–7% or flexible cash + equity mix.</p>
+</div>
+<button class="flex-shrink-0 min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-accent hover:bg-accent/90 text-white text-base font-bold leading-normal tracking-[0.015em] transition-colors">
+<span class="truncate">Build Your Package</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html class="dark overflow-x-hidden" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>StartupOps - Empowering India's Next-Gen Founders</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #64FFDA, #64FFDA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        .gradient-border {
+            position: relative;
+            background: linear-gradient(to right, #2a2a2a, #2a2a2a), linear-gradient(to right, #64FFDA, #64FFDA);
+            background-clip: padding-box, border-box;
+            background-origin: padding-box, border-box;
+            border: 1px solid transparent;
+        }
+        .glassmorphism {
+            background: rgba(42, 42, 42, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+        }
+        
+        /* 3D Card Styles for Home Page */
+        .home-card-3d-parent {
+            width: 100%;
+            max-width: 280px;
+            height: 320px;
+            perspective: 1000px;
+            margin: 0 auto;
+        }
+        
+        .home-card-3d {
+            height: 100%;
+            border-radius: 25px;
+            background: linear-gradient(135deg, rgba(100, 255, 218, 0.8) 0%, rgba(100, 255, 218, 0.6) 100%);
+            transition: all 0.5s ease-in-out;
+            transform-style: preserve-3d;
+            box-shadow: rgba(100, 255, 218, 0) 40px 50px 25px -40px, rgba(100, 255, 218, 0.2) 0px 25px 25px -5px;
+        }
+        
+        .home-card-3d-glass {
+            transform-style: preserve-3d;
+            position: absolute;
+            inset: 8px;
+            border-radius: 30px;
+            border-top-right-radius: 50%;
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.3) 100%);
+            backdrop-filter: blur(5px);
+            transform: translate3d(0px, 0px, 25px);
+            border-left: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.5s ease-in-out;
+        }
+        
+        .home-card-3d-content {
+            padding: 60px 25px 0px 25px;
+            transform: translate3d(0, 0, 26px);
+            text-align: center;
+        }
+        
+        .home-card-3d-content .home-card-3d-title {
+            display: block;
+            color: white;
+            font-weight: 900;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        .home-card-3d-content .home-card-3d-text {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 13px;
+            margin-top: 10px;
+            line-height: 1.4;
+        }
+        
+        .home-card-3d-icon {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .home-card-3d-parent:hover .home-card-3d {
+            transform: rotate3d(1, 1, 0, 15deg);
+            box-shadow: rgba(100, 255, 218, 0.4) 30px 50px 25px -40px, rgba(100, 255, 218, 0.3) 0px 25px 30px 0px;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#212121",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#212121",
+                        "accent": "#64FFDA",
+                        "text-primary": "#FFFFFF",
+                        "text-secondary": "#B0B0B0",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "heading": ["Poppins", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem", 
+                        "lg": "1rem", 
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-dark font-display text-text-primary overflow-x-hidden">
+    <!-- Hero Container with Background -->
+    <div class="relative w-full overflow-x-hidden">
+        <!-- Standardized Background Elements -->
+        <div class="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-b from-primary/30 to-transparent z-0"></div>
+        <div class="absolute top-[-200px] right-[-200px] w-[500px] h-[500px] bg-accent/10 rounded-full blur-3xl z-0"></div>
+        <div class="absolute top-[300px] left-[-250px] w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl z-0"></div>
+        
+        <!-- Content Container -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- STANDARDIZED NAVIGATION -->
+            <header class="flex items-center justify-between py-6">
+                <!-- Logo Section -->
+                <div class="flex items-center gap-4 text-white">
+                    <div class="size-6 text-accent">
+                        <svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-white text-xl font-bold font-heading">StartupOps</h2>
+                </div>
+                
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex items-center gap-8 text-sm">
+                    <a class="text-accent" href="index.html">Home</a>
+                    <a class="text-gray-300 hover:text-white transition-colors" href="services.html">Services</a>
+                    <a class="text-gray-300 hover:text-white transition-colors" href="portfolio.html">Portfolio</a>
+                    <a class="text-gray-300 hover:text-white transition-colors" href="about.html">About</a>
+                    <a class="text-gray-300 hover:text-white transition-colors" href="how-it-works.html">How It Works</a>
+                </nav>
+                
+                <!-- CTA Button -->
+                <button onclick="window.location.href='contact.html'" class="hidden md:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary/80 border border-accent/30 text-white text-sm font-semibold leading-normal hover:bg-primary transition-all hover:shadow-lg hover:shadow-accent/20">
+                    <span class="truncate">Join Fellowship</span>
+                </button>
+            </header>
+
+            <!-- STANDARDIZED HERO CONTENT -->
+            <main class="py-20 sm:py-28 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <!-- Main Heading -->
+                    <h1 class="text-5xl md:text-7xl font-bold font-heading tracking-tighter text-white leading-tight">
+                        Empowering India's <span class="gradient-text">Next-Gen</span> Founders
+                    </h1>
+                    
+                    <!-- Subtitle -->
+                    <h2 class="mt-6 max-w-2xl mx-auto text-lg text-gray-400">
+                        End-to-end startup execution, mentorship, and growth — all for just 3–7% equity.
+                    </h2>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="mt-10 flex flex-wrap gap-4 justify-center">
+                        <!-- Primary CTA -->
+                        <button onclick="window.location.href='contact.html'" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-accent text-black text-base font-bold leading-normal tracking-wide shadow-lg shadow-accent/20 transition-all hover:scale-105 hover:shadow-xl hover:shadow-accent/30">
+                            <span class="truncate">Start Your Startup</span>
+                        </button>
+                        
+                        <!-- Secondary CTA -->
+                        <button onclick="window.location.href='services.html'" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-white/10 border border-white/20 text-white text-base font-bold leading-normal tracking-wide backdrop-blur-sm transition-all hover:bg-white/20 hover:border-white/30">
+                            <span class="truncate">Explore Services</span>
+                        </button>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Short Pitch -->
+            <section class="py-16">
+                <p class="max-w-3xl mx-auto text-center text-lg text-gray-300 leading-relaxed">
+                    StartupOps is India's first hybrid Startup Studio-as-a-Service. We help founders turn ideas into reality through affordable tech, design, legal, and marketing support — acting as true co-builders, not just consultants.
+                </p>
+            </section>
+
+            <!-- Why StartupOps? Section -->
+            <section class="py-16">
+                <div class="text-center">
+                    <h2 class="text-4xl font-bold font-heading text-white">Why StartupOps?</h2>
+                    <p class="mt-2 text-lg text-gray-400">Affordable. Reliable. Aligned.</p>
+                </div>
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="glassmorphism rounded-xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-1">
+                        <div class="flex items-center justify-center size-12 rounded-lg bg-accent/10 text-accent mb-4">
+                            <span class="material-symbols-outlined">hub</span>
+                        </div>
+                        <h3 class="font-bold text-white text-lg">End-to-End Execution</h3>
+                        <p class="mt-2 text-sm text-gray-400">From ideation and MVP to launch and scaling, we handle the operational heavy lifting.</p>
+                    </div>
+                    <div class="glassmorphism rounded-xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-1">
+                        <div class="flex items-center justify-center size-12 rounded-lg bg-accent/10 text-accent mb-4">
+                            <span class="material-symbols-outlined">handshake</span>
+                        </div>
+                        <h3 class="font-bold text-white text-lg">Aligned Incentives</h3>
+                        <p class="mt-2 text-sm text-gray-400">We take equity, not hefty fees. Your success is our success, making us true partners.</p>
+                    </div>
+                    <div class="glassmorphism rounded-xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-1">
+                        <div class="flex items-center justify-center size-12 rounded-lg bg-accent/10 text-accent mb-4">
+                            <span class="material-symbols-outlined">groups</span>
+                        </div>
+                        <h3 class="font-bold text-white text-lg">Expert Teams</h3>
+                        <p class="mt-2 text-sm text-gray-400">Access our in-house collective of vetted designers, developers, and growth marketers.</p>
+                    </div>
+                    <div class="glassmorphism rounded-xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-1">
+                        <div class="flex items-center justify-center size-12 rounded-lg bg-accent/10 text-accent mb-4">
+                            <span class="material-symbols-outlined">rocket_launch</span>
+                        </div>
+                        <h3 class="font-bold text-white text-lg">Founder-First Approach</h3>
+                        <p class="mt-2 text-sm text-gray-400">We focus on building sustainable businesses, providing mentorship beyond just services.</p>
+                    </div>
+                </div>
+                <p class="mt-8 text-center text-gray-400">We grow only when you do — offering startup-building support 30–50% below market rates.</p>
+            </section>
+
+            <!-- Stats & Highlights Section -->
+            <section class="py-16">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                    <div class="gradient-border rounded-xl p-px">
+                        <div class="bg-[#1a2333] rounded-[14px] p-6 h-full">
+                            <p class="text-4xl font-bold gradient-text">10+</p>
+                            <p class="mt-2 text-gray-300">Startups Supported</p>
+                        </div>
+                    </div>
+                    <div class="gradient-border rounded-xl p-px">
+                        <div class="bg-[#1a2333] rounded-[14px] p-6 h-full">
+                            <p class="text-4xl font-bold gradient-text">50%</p>
+                            <p class="mt-2 text-gray-300">Cheaper Services</p>
+                        </div>
+                    </div>
+                    <div class="gradient-border rounded-xl p-px">
+                        <div class="bg-[#1a2333] rounded-[14px] p-6 h-full">
+                            <p class="text-4xl font-bold gradient-text">5+</p>
+                            <p class="mt-2 text-gray-300">College Incubators</p>
+                        </div>
+                    </div>
+                    <div class="gradient-border rounded-xl p-px">
+                        <div class="bg-[#1a2333] rounded-[14px] p-6 h-full">
+                            <p class="text-4xl font-bold gradient-text">Equity</p>
+                            <p class="mt-2 text-gray-300">Partnerships Built</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section class="py-16">
+                <div class="text-center">
+                    <h2 class="text-4xl font-bold font-heading text-white">Trusted by Founders</h2>
+                </div>
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="glassmorphism rounded-xl p-8">
+                        <p class="text-gray-300 italic">"StartupOps was the technical co-founder we needed. They built our entire platform in record time, allowing us to focus on our customers."</p>
+                        <div class="mt-6 flex items-center gap-4">
+                            <div class="size-12 rounded-full bg-gradient-to-r from-accent to-accent flex items-center justify-center text-white font-bold">AS</div>
+                            <div>
+                                <p class="font-bold text-white">Aarav Sharma</p>
+                                <p class="text-sm text-gray-400">Founder of EduLeap</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glassmorphism rounded-xl p-8">
+                        <p class="text-gray-300 italic">"The aligned incentive model is a game-changer. It feels like having a true partner on our journey, not just another vendor."</p>
+                        <div class="mt-6 flex items-center gap-4">
+                            <div class="size-12 rounded-full bg-gradient-to-r from-accent to-accent flex items-center justify-center text-white font-bold">PS</div>
+                            <div>
+                                <p class="font-bold text-white">Priya Singh</p>
+                                <p class="text-sm text-gray-400">CEO of RR Purification</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3D Interactive Cards Section -->
+            <section class="py-20">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold font-heading text-white">Experience Our Services</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-gray-400">Interactive showcase of what we offer</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- 3D Card 1 - Strategy -->
+                    <div class="home-card-3d-parent">
+                        <div class="home-card-3d">
+                            <div class="home-card-3d-glass"></div>
+                            <div class="home-card-3d-content">
+                                <span class="material-symbols-outlined home-card-3d-icon">lightbulb</span>
+                                <span class="home-card-3d-title">Strategy & Branding</span>
+                                <span class="home-card-3d-text">From idea validation to compelling pitch decks that secure funding</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3D Card 2 - Technology -->
+                    <div class="home-card-3d-parent">
+                        <div class="home-card-3d" style="background: linear-gradient(135deg, rgba(142, 45, 226, 0.8) 0%, rgba(43, 140, 255, 0.9) 100%);">
+                            <div class="home-card-3d-glass"></div>
+                            <div class="home-card-3d-content">
+                                <span class="material-symbols-outlined home-card-3d-icon">rocket_launch</span>
+                                <span class="home-card-3d-title">Technology</span>
+                                <span class="home-card-3d-text">MVP development, web apps, and scalable tech solutions</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3D Card 3 - Legal -->
+                    <div class="home-card-3d-parent">
+                        <div class="home-card-3d" style="background: linear-gradient(135deg, rgba(0, 224, 255, 0.8) 0%, rgba(142, 45, 226, 0.9) 100%);">
+                            <div class="home-card-3d-glass"></div>
+                            <div class="home-card-3d-content">
+                                <span class="material-symbols-outlined home-card-3d-icon">gavel</span>
+                                <span class="home-card-3d-title">Legal & Compliance</span>
+                                <span class="home-card-3d-text">Incorporation, agreements, and legal documentation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3D Card 4 - Growth -->
+                    <div class="home-card-3d-parent">
+                        <div class="home-card-3d" style="background: linear-gradient(135deg, rgba(43, 140, 255, 0.9) 0%, rgba(0, 224, 255, 0.8) 100%);">
+                            <div class="home-card-3d-glass"></div>
+                            <div class="home-card-3d-content">
+                                <span class="material-symbols-outlined home-card-3d-icon">trending_up</span>
+                                <span class="home-card-3d-title">Growth & Marketing</span>
+                                <span class="home-card-3d-text">Digital marketing, SEO, and community building strategies</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Equity Calculator CTA Section -->
+            <section class="py-24">
+                <div class="glassmorphism rounded-xl p-10 text-center">
+                    <h2 class="text-3xl font-bold font-heading text-white">Ready to Build Your Vision?</h2>
+                    <p class="mt-3 max-w-xl mx-auto text-gray-300">See how our equity model works for your startup idea. No commitment, just clarity.</p>
+                    <div class="mt-8">
+                        <button onclick="window.location.href='equity-calculator.html'" class="flex mx-auto min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-accent text-black text-base font-bold leading-normal tracking-wide shadow-lg shadow-accent/20 transition-all hover:scale-105 hover:shadow-xl hover:shadow-accent/30">
+                            <span class="material-symbols-outlined mr-2">calculate</span>
+                            <span class="truncate">Calculate Your Equity</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Enhanced Floating Chat Widget -->
+    <div id="chatWidget" class="fixed bottom-8 right-8 z-50">
+        <!-- Chat Toggle Button -->
+        <button id="chatToggle" class="flex items-center justify-center size-16 rounded-full bg-gradient-to-r from-accent to-cyan-400 text-white shadow-2xl shadow-accent/40 transition-all duration-300 hover:scale-110 hover:shadow-accent/60 group">
+            <span id="chatIcon" class="material-symbols-outlined text-3xl transition-transform duration-300 group-hover:rotate-12">chat</span>
+            <span id="closeIcon" class="material-symbols-outlined text-3xl hidden transition-transform duration-300">close</span>
+        </button>
+        
+        <!-- Chat Panel -->
+        <div id="chatPanel" class="absolute bottom-20 right-0 w-80 h-96 bg-gray-900/95 backdrop-blur-xl border border-accent/30 rounded-2xl shadow-2xl shadow-accent/20 transform scale-0 origin-bottom-right transition-all duration-300 opacity-0">
+            <!-- Chat Header -->
+            <div class="flex items-center justify-between p-4 border-b border-gray-700/50">
+                <div class="flex items-center gap-3">
+                    <div class="size-8 rounded-full bg-gradient-to-r from-accent to-cyan-400 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-sm text-white">support_agent</span>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-semibold text-sm">StartupOps Assistant</h3>
+                        <p class="text-green-400 text-xs flex items-center gap-1">
+                            <span class="size-2 bg-green-400 rounded-full animate-pulse"></span>
+                            Online
+                        </p>
+                    </div>
+                </div>
+                <button id="minimizeChat" class="text-gray-400 hover:text-white transition-colors">
+                    <span class="material-symbols-outlined text-lg">minimize</span>
+                </button>
+            </div>
+            
+            <!-- Chat Messages -->
+            <div id="chatMessages" class="flex-1 p-4 space-y-3 overflow-y-auto h-64">
+                <!-- Welcome Message -->
+                <div class="flex items-start gap-2">
+                    <div class="size-6 rounded-full bg-gradient-to-r from-accent to-cyan-400 flex items-center justify-center flex-shrink-0 mt-1">
+                        <span class="material-symbols-outlined text-xs text-white">support_agent</span>
+                    </div>
+                    <div class="bg-gray-800/80 backdrop-blur-sm rounded-lg rounded-tl-none p-3 max-w-[220px]">
+                        <p class="text-white text-sm">Welcome to StartupOps! How can I help you build the future? 🚀</p>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <button class="quick-action-btn bg-accent/20 hover:bg-accent/30 text-accent border border-accent/30 rounded-full px-3 py-1 text-xs transition-all duration-200 hover:scale-105">
+                        💡 Get Started
+                    </button>
+                    <button class="quick-action-btn bg-accent/20 hover:bg-accent/30 text-accent border border-accent/30 rounded-full px-3 py-1 text-xs transition-all duration-200 hover:scale-105">
+                        📊 Equity Calculator
+                    </button>
+                    <button class="quick-action-btn bg-accent/20 hover:bg-accent/30 text-accent border border-accent/30 rounded-full px-3 py-1 text-xs transition-all duration-200 hover:scale-105">
+                        🛠️ Our Services
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Chat Input -->
+            <div class="p-4 border-t border-gray-700/50">
+                <div class="flex items-center gap-2">
+                    <input 
+                        id="chatInput" 
+                        type="text" 
+                        placeholder="Type your message..." 
+                        class="flex-1 bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white text-sm placeholder-gray-300 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/30 transition-all"
+                    >
+                    <button id="sendMessage" class="bg-gradient-to-r from-accent to-cyan-400 hover:from-accent/80 hover:to-cyan-400/80 text-white rounded-lg p-2 transition-all duration-200 hover:scale-105">
+                        <span class="material-symbols-outlined text-lg">send</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

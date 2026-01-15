@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html class="dark overflow-x-hidden" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>StartupOps - Our Process</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Inter:wght@400;500;700&family=Nunito+Sans:wght@400&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <!-- Standardized Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #64FFDA, #64FFDA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        .glassmorphism {
+            background: rgba(42, 42, 42, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+        }
+        .font-poppins { font-family: 'Poppins', sans-serif; }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#212121",
+                        "background-dark": "#212121",
+                        "accent": "#64FFDA",
+                        "text-primary": "#FFFFFF",
+                        "text-secondary": "#B0B0B0",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "heading": ["Poppins", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem", 
+                        "lg": "1rem", 
+                        "xl": "1.5rem",
+                        "20px": "20px",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'glow': '0 0 15px 5px rgba(43, 140, 255, 0.2)',
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-dark font-display text-text-primary overflow-x-hidden">
+    <!-- Hero Container with Background -->
+    <div class="relative w-full overflow-x-hidden">
+        <!-- Standardized Background Elements -->
+        <div class="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-b from-primary/30 to-transparent z-0"></div>
+        <div class="absolute top-[-200px] right-[-200px] w-[500px] h-[500px] bg-accent/10 rounded-full blur-3xl z-0"></div>
+        <div class="absolute top-[300px] left-[-250px] w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl z-0"></div>
+        
+        <!-- Content Container -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- STANDARDIZED NAVIGATION -->
+            <header class="flex items-center justify-between py-6">
+                <!-- Logo Section -->
+                <div class="flex items-center gap-4 text-white">
+                    <div class="size-6 text-accent">
+                        <svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-white text-xl font-bold font-heading">StartupOps</h2>
+                </div>
+                
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex items-center gap-8 text-sm">
+                    <a class="text-gray-300 hover:text-white transition-colors" href="index.html">Home</a>
+                    <a class="text-gray-300 hover:text-white transition-colors" href="services.html">Services</a>
+                    <a class="text-gray-300 hover:text-white transition-colors" href="portfolio.html">Portfolio</a>
+                    <a class="text-gray-300 hover:text-white transition-colors" href="about.html">About</a>
+                    <a class="text-accent" href="how-it-works.html">How It Works</a>
+                </nav>
+                
+                <!-- CTA Button -->
+                <button onclick="window.location.href='contact.html'" class="hidden md:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary/80 border border-accent/30 text-white text-sm font-semibold leading-normal hover:bg-primary transition-all hover:shadow-lg hover:shadow-accent/20">
+                    <span class="truncate">Get Started</span>
+                </button>
+            </header>
+
+            <!-- STANDARDIZED HERO CONTENT -->
+            <main class="py-20 sm:py-28 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <!-- Main Heading -->
+                    <h1 class="text-5xl md:text-7xl font-bold font-heading tracking-tighter text-white leading-tight">
+                        Your Journey to <span class="gradient-text">Scale</span>
+                    </h1>
+                    
+                    <!-- Subtitle -->
+                    <h2 class="mt-6 max-w-2xl mx-auto text-lg text-gray-400">
+                        🧭 You focus on vision; we handle execution.
+                    </h2>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="mt-10 flex flex-wrap gap-4 justify-center">
+                        <!-- Primary CTA -->
+                        <button onclick="window.location.href='contact.html'" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-accent text-black text-base font-bold leading-normal tracking-wide shadow-lg shadow-accent/20 transition-all hover:scale-105 hover:shadow-xl hover:shadow-accent/30">
+                            <span class="truncate">Get Started</span>
+                        </button>
+                        
+                        <!-- Secondary CTA -->
+                        <button onclick="window.location.href='services.html'" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-white/10 border border-white/20 text-white text-base font-bold leading-normal tracking-wide backdrop-blur-sm transition-all hover:bg-white/20 hover:border-white/30">
+                            <span class="truncate">View Services</span>
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Process Content Section -->
+    <div class="relative w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="layout-content-container flex flex-col w-full max-w-6xl flex-1 items-center gap-16 mx-auto">
+
+                    <div class="relative w-full">
+                        <!-- Desktop connecting lines -->
+                        <div class="absolute inset-0 top-1/2 -mt-10 hidden lg:flex items-center justify-center">
+                            <svg class="overflow-visible" height="20" preserveAspectRatio="none" viewBox="0 0 1000 20" width="100%">
+                                <defs>
+                                    <linearGradient id="neon-gradient" x1="0%" x2="100%" y1="0%" y2="0%">
+                                        <stop offset="0%" style="stop-color:#64FFDA"></stop>
+                                        <stop offset="100%" style="stop-color:#64FFDA"></stop>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M 150 10 C 350 10, 350 10, 500 10" fill="none" stroke="url(#neon-gradient)" stroke-dasharray="10 5" stroke-width="2">
+                                    <animate attributeName="stroke-dashoffset" dur="2s" from="30" repeatCount="indefinite" to="0"></animate>
+                                </path>
+                                <path d="M 500 10 C 650 10, 650 10, 850 10" fill="none" stroke="url(#neon-gradient)" stroke-dasharray="10 5" stroke-width="2">
+                                    <animate attributeName="stroke-dashoffset" dur="2s" from="30" repeatCount="indefinite" to="0"></animate>
+                                </path>
+                            </svg>
+                        </div>
+
+                        <!-- Mobile connecting lines -->
+                        <div class="absolute inset-0 left-1/2 -ml-[1px] lg:hidden flex items-center justify-center">
+                            <svg class="overflow-visible" height="100%" preserveAspectRatio="none" viewBox="0 0 2 1000" width="2">
+                                <defs>
+                                    <linearGradient id="neon-gradient-vertical" x1="0%" x2="0%" y1="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#64FFDA"></stop>
+                                        <stop offset="100%" style="stop-color:#64FFDA"></stop>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M 1 100 V 900" fill="none" stroke="url(#neon-gradient-vertical)" stroke-dasharray="10 5" stroke-width="2">
+                                    <animate attributeName="stroke-dashoffset" dur="2s" from="30" repeatCount="indefinite" to="0"></animate>
+                                </path>
+                            </svg>
+                        </div>
+
+                        <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-8 p-4">
+                            <!-- Step 1 -->
+                            <div class="flex flex-1 flex-col gap-4 p-6 rounded-20px bg-white/5 border border-white/10 backdrop-blur-lg shadow-lg hover:shadow-glow transition-shadow duration-300 z-10">
+                                <div class="text-[#64FFDA]">
+                                    <span class="material-symbols-outlined !text-4xl">widgets</span>
+                                </div>
+                                <div class="flex flex-col gap-2">
+                                    <h3 class="text-white text-xl font-bold font-heading">Step 1 – Choose Your Modules</h3>
+                                    <p class="text-white/70 text-base leading-relaxed">Select from our service categories — branding, tech, legal, or marketing.</p>
+                                </div>
+                                <div class="mt-4 space-y-2">
+                                    <div class="flex items-center gap-2 text-sm text-white/60">
+                                        <span class="w-2 h-2 bg-[#64FFDA] rounded-full"></span>
+                                        <span>Strategy & Branding</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm text-white/60">
+                                        <span class="w-2 h-2 bg-[#64FFDA] rounded-full"></span>
+                                        <span>Technology Development</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm text-white/60">
+                                        <span class="w-2 h-2 bg-[#64FFDA] rounded-full"></span>
+                                        <span>Legal & Compliance</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm text-white/60">
+                                        <span class="w-2 h-2 bg-[#64FFDA] rounded-full"></span>
+                                        <span>Marketing & Growth</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 2 -->
+                            <div class="flex flex-1 flex-col gap-4 p-6 rounded-20px bg-white/5 border border-white/10 backdrop-blur-lg shadow-lg hover:shadow-glow transition-shadow duration-300 z-10">
+                                <div class="text-[#43a2f3]">
+                                    <span class="material-symbols-outlined !text-4xl">handshake</span>
+                                </div>
+                                <div class="flex flex-col gap-2">
+                                    <h3 class="text-white text-xl font-bold font-heading">Step 2 – We Co-Build Together</h3>
+                                    <p class="text-white/70 text-base leading-relaxed">Our project managers match you with the right experts and manage delivery.</p>
+                                </div>
+                                <div class="mt-4 space-y-2">
+                                    <div class="flex items-center gap-2 text-sm text-white/60">
+                                        <span class="w-2 h-2 bg-[#43a2f3] rounded-full"></span>
+                                        <span>Expert team matching</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm text-white/60">
+                                        <span class="w-2 h-2 bg-[#43a2f3] rounded-full"></span>
+                                        <span>Weekly progress reviews</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm text-white/60">
+                                        <span class="w-2 h-2 bg-[#43a2f3] rounded-full"></span>
+                                        <span>Collaborative execution</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm text-white/60">
+                                        <span class="w-2 h-2 bg-[#43a2f3] rounded-full"></span>
+                                        <span>Quality assurance</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 3 -->
+                            <div class="flex flex-1 flex-col gap-4 p-6 rounded-20px bg-white/5 border border-white/10 backdrop-blur-lg shadow-lg hover:shadow-glow transition-shadow duration-300 z-10">
+                                <div class="text-[#64FFDA]">
+                                    <span class="material-symbols-outlined !text-4xl">rocket_launch</span>
+                                </div>
+                                <div class="flex flex-col gap-2">
+                                    <h3 class="text-white text-xl font-bold font-heading">Step 3 – You Grow, We Grow</h3>
+                                    <p class="text-white/70 text-base leading-relaxed">We stay aligned — taking only 3–7% equity or discounted fees until you scale.</p>
+                                </div>
+                                <div class="mt-4 space-y-2">
+                                    <div class="flex items-center gap-2 text-sm text-white/60">
+                                        <span class="w-2 h-2 bg-[#64FFDA] rounded-full"></span>
+                                        <span>Equity-based partnership</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm text-white/60">
+                                        <span class="w-2 h-2 bg-[#64FFDA] rounded-full"></span>
+                                        <span>Ongoing mentorship</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm text-white/60">
+                                        <span class="w-2 h-2 bg-[#64FFDA] rounded-full"></span>
+                                        <span>Growth support</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-sm text-white/60">
+                                        <span class="w-2 h-2 bg-[#64FFDA] rounded-full"></span>
+                                        <span>Success alignment</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Process Details -->
+                    <section class="w-full max-w-4xl mx-auto mt-16">
+                        <div class="text-center mb-12">
+                            <h3 class="text-white text-3xl font-bold font-heading mb-4">Why Our Process Works</h3>
+                            <p class="text-white/70 text-lg">Built on transparency, expertise, and aligned incentives</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="bg-white/5 border border-white/10 rounded-20px p-6 backdrop-blur-lg">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <span class="material-symbols-outlined text-2xl text-electric-blue">speed</span>
+                                    <h4 class="text-white text-lg font-bold font-heading">Fast Execution</h4>
+                                </div>
+                                <p class="text-white/70">Our streamlined process and expert teams ensure rapid delivery without compromising quality. Most projects launch within 8-12 weeks.</p>
+                            </div>
+
+                            <div class="bg-white/5 border border-white/10 rounded-20px p-6 backdrop-blur-lg">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <span class="material-symbols-outlined text-2xl text-electric-blue">visibility</span>
+                                    <h4 class="text-white text-lg font-bold font-heading">Full Transparency</h4>
+                                </div>
+                                <p class="text-white/70">Weekly updates, shared project boards, and direct access to your team members. You're always in the loop on progress and decisions.</p>
+                            </div>
+
+                            <div class="bg-white/5 border border-white/10 rounded-20px p-6 backdrop-blur-lg">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <span class="material-symbols-outlined text-2xl text-electric-blue">trending_up</span>
+                                    <h4 class="text-white text-lg font-bold font-heading">Scalable Solutions</h4>
+                                </div>
+                                <p class="text-white/70">We build with growth in mind. Every solution is designed to scale with your business, from MVP to enterprise-level operations.</p>
+                            </div>
+
+                            <div class="bg-white/5 border border-white/10 rounded-20px p-6 backdrop-blur-lg">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <span class="material-symbols-outlined text-2xl text-electric-blue">support_agent</span>
+                                    <h4 class="text-white text-lg font-bold font-heading">Ongoing Support</h4>
+                                </div>
+                                <p class="text-white/70">Our partnership doesn't end at launch. We provide continued support, mentorship, and growth guidance as your startup evolves.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- CTA Section -->
+                    <section class="w-full max-w-2xl mx-auto text-center mt-16">
+                        <div class="bg-white/5 border border-white/10 rounded-20px p-8 backdrop-blur-lg">
+                            <h3 class="text-white text-2xl font-bold font-heading mb-4">Ready to Start Your Journey?</h3>
+                            <p class="text-white/70 mb-6">Let's discuss your startup idea and create a custom execution plan that fits your vision and budget.</p>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                <button onclick="window.location.href='contact.html'" class="flex items-center justify-center px-6 py-3 bg-accent text-black font-bold rounded-lg hover:bg-accent/90 transition-colors">
+                                    <span class="material-symbols-outlined mr-2">rocket_launch</span>
+                                    Start Your Project
+                                </button>
+                                <button onclick="window.location.href='equity-calculator.html'" class="flex items-center justify-center px-6 py-3 border border-white/20 text-white font-bold rounded-lg hover:bg-white/10 transition-colors">
+                                    <span class="material-symbols-outlined mr-2">calculate</span>
+                                    Calculate Equity
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </main>
+
+            <footer class="flex flex-col gap-6 px-5 py-10 text-center @container mt-20 border-t border-white/10 font-display">
+                <div class="flex flex-wrap items-center justify-center gap-6 @[480px]:flex-row @[480px]:justify-around">
+                    <a class="text-white/60 text-base font-normal leading-normal min-w-40 hover:text-white transition-colors" href="#">Privacy Policy</a>
+                    <a class="text-white/60 text-base font-normal leading-normal min-w-40 hover:text-white transition-colors" href="#">Terms of Service</a>
+                    <a class="text-white/60 text-base font-normal leading-normal min-w-40 hover:text-white transition-colors" href="contact.html">Contact Us</a>
+                </div>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a class="text-white/60 hover:text-white transition-colors" href="#">
+                        <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path clip-rule="evenodd" d="M19.333 0H4.667C2.089 0 0 2.089 0 4.667v14.666C0 21.911 2.089 24 4.667 24h14.666C21.911 24 24 21.911 24 19.333V4.667C24 2.089 21.911 0 19.333 0zM8.339 20.333H5V8.889h3.339v11.444zM6.667 7.556a1.889 1.889 0 110-3.778 1.889 1.889 0 010 3.778zM20.333 20.333h-3.333v-5.59c0-1.333-.024-3.044-1.856-3.044-1.856 0-2.144 1.444-2.144 2.944v5.689H9.667V8.889h3.2v1.467h.044c.444-.833 1.533-1.711 3.156-1.711 3.378 0 4 2.222 4 5.111v5.911h.001z" fill-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                    <a class="text-white/60 hover:text-white transition-colors" href="#">
+                        <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+                        </svg>
+                    </a>
+                    <a class="text-white/60 hover:text-white transition-colors" href="#">
+                        <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                </div>
+                <p class="text-white/60 text-base font-normal leading-normal">© 2024 StartupOps. All rights reserved.</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
